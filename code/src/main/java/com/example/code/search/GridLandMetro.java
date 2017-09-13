@@ -176,7 +176,7 @@ public class GridLandMetro {
                 }
 
                 for(int j=0;j<tracks.size(); j++)
-                    for(long j=0;j<tracks.size(); j++)
+//                    for(long j=0;j<tracks.size(); j++)
 //                for(long j=0;j<tempTracks.size(); j++)
                 {
                     Tuple t  = tracks.get(j);
