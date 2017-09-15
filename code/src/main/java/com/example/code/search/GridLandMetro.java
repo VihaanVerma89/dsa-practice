@@ -15,11 +15,12 @@ import java.util.HashMap;
 public class GridLandMetro {
 
     public static void main(String [] args) throws IOException {
-
+        Logger.log(System.currentTimeMillis()+"");
         GridLandMetro gridLandMetro = new GridLandMetro();
         gridLandMetro.input();
 //        gridLandMetro.testInput();
         gridLandMetro.process();
+        Logger.log(System.currentTimeMillis()+"");
     }
 
     long r,c,k;
@@ -108,13 +109,11 @@ public class GridLandMetro {
     public void process()
     {
         ArrayList<Tuple> tracks;
-        ArrayList<Tuple> tempTracks = new ArrayList<>();
         for(long i=0;i<=r;i++)
         {
             tracks = rowTracks.get(i);
             if(tracks != null)
             {
-                tempTracks.addAll(tracks);
                 tracks.sort(new Comparator<Tuple>() {
                     @Override
                     public int compare(Tuple tuple, Tuple t1) {
@@ -191,6 +190,18 @@ public class GridLandMetro {
         System.out.println(lampPosts);
     }
 
+
+    static class Logger
+    {
+        private static boolean shouldLog= false;
+        public static void log(String log)
+        {
+           if(shouldLog)
+           {
+               System.out.println(log);
+           }
+        }
+    }
     class Tuple
     {
         long s, e;
