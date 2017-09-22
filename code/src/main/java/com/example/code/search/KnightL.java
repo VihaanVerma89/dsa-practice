@@ -3,125 +3,118 @@ package com.example.code.search;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-
-import static android.R.attr.x;
-import static android.R.id.input;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 /**
- * Created by vihaan on 17/9/17.
+ * Created by vihaan on 19/09/17.
  */
 
 public class KnightL {
 
-    private int n;
-
-    int q[] = new int [42*42];
-    int d[][] = new int [42][42];
-
-    public static void main(String [] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         KnightL knightL = new KnightL();
         knightL.input();
+        knightL.process();
     }
 
-    public  int solve(int n, int da, int db)
-    {
-        int head = 0;
-        int tail =0;
-        q[tail++] = 0;
-        d[0][0]=0;
-
-        ArrayList<Tuple> moves = new ArrayList<>();
-
-        for(int i=-1;i<=1;i+=2)
-        {
-            for(int j=-1;j<=1;j+=2)
-            {
-                moves.add(new Tuple(da*i, db*j));
-                if(da!=db)
-                {
-                    moves.add(new Tuple(da*i, db*j));
-                }
-            }
-        }
-
-
-        while(head<tail)
-        {
-            int v = q[head++];
-            int cx = v/n;
-            int cy = v%n;
-            for(Tuple tuple: moves)
-            {
-                int dx = tuple.getS();
-                int dy = tuple.getE();
-
-                if(Math.abs(dx) == Math.abs(dy)  && da != db)
-                    continue;
-
-                int nx = cx + dx;
-                int ny = cy + dy;
-
-                if(nx < 0||ny<0||nx>=n||ny>=n||d[nx][ny] != 0) continue;
-
-                d[nx][ny] = d[cx][cy] + 1;
-                q[tail++]= nx * n + ny;
-
-            }
-        }
-
-        return d[n-1][n-1] == 0 ? -1 : d[n-1][n-1];
-    }
+    int n;
+    LinkedList<String> q = new LinkedList<>();
+    Map<String, Integer> visited = new HashMap<String, Integer>();
 
     public void input() throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
+    }
 
-        for(int i=1;i<n;i++)
-        {
-            for(int j=1;j<n;j++)
-            {
-                if(j > 1)
-                {
-                    System.out.print(" ");
+    public void process() {
+        int result;
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < n; j++) {
+                result = bfs(i , j);
+                if (j == 1) {
+                    System.out.print(result);
+                } else {
+                    System.out.print(" " + result);
                 }
-                System.out.print(solve(n,i,j));
             }
-            System.out.println(" ");
-
+            System.out.println();
         }
     }
 
+    public int bfs(int a, int b) {
+        int result = -1;
+
+        int ni;
+        int nj;
+
+        String parentKey = "0,0";
+        visited.clear();
+        visited.put(parentKey, 0);
+        q.add(parentKey);
 
 
+        while (q.size() != 0) {
 
+            String poppedKey = q.pop();
+            String [] indexes = poppedKey.split(",");
+            int ci=Integer.parseInt(indexes[0]);
+            int cj=Integer.parseInt(indexes[1]);
 
+            for (int mi = -1; mi <= 1; mi += 2) {
+                for (int mj = -1; mj <= 1; mj += 2) {
+                    ni = ci + (mi * a);
+                    nj = cj + (mj * b);
 
-    class Tuple
-    {
-        int s, e;
-        public Tuple(int s, int e)
+                    visitNode(poppedKey, ni,nj);
+                }
+            }
+
+            for (int mi = -1; mi <= 1; mi += 2) {
+                for (int mj = -1; mj <= 1; mj += 2) {
+                    ni = ci + (mi * b);
+                    nj = cj + (mj * a);
+
+                    visitNode(poppedKey, ni,nj);
+                }
+            }
+
+        }
+
+        int temp = n-1;
+        String lastNode = temp+","+temp;
+        if(visited.containsKey(lastNode))
         {
-            this.s = s;
-            this.e = e;
+            result = visited.get(lastNode);
         }
 
-        public int getS() {
-            return s;
-        }
+//        System.out.println("knightL["+a+","+b+"]="+result);
+        return result;
+    }
 
-        public void setS(int s) {
-            this.s = s;
-        }
+    private void visitNode(String poppedKey, int ni, int nj)
+    {
 
-        public int getE() {
-            return e;
-        }
+                    if (ni < 0 || nj < 0 || ni >= n || nj >= n) {
+//                        System.out.println("invalid value");
+//                        System.out.println("[ni,nj]=" + ni + "," + nj);
+                        return;
+                    }
 
-        public void setE(int e) {
-            this.e = e;
-        }
+                    String key = ni + "," + nj;
+                    if (visited.containsKey(key)) {
+                        // node already visited.
+                    } else {
+                        int parentStepCount;
+                        if (visited.containsKey(poppedKey)) {
+                            parentStepCount = visited.get(poppedKey);
+                            parentStepCount++;
+                            visited.put(key, parentStepCount);
+                            q.add(key);
+                        }
+                    }
+
     }
 
 
