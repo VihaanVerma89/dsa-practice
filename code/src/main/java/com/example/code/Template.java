@@ -6,22 +6,22 @@ package com.example.code;
 
 public class Template {
 
-    public static void main(String [] args)
+    public  static void main(String [] args)
     {
 
     }
 
-    public static void input()
+    public  void input()
     {
 
     }
 
-    public static void testInput()
+    public  void testInput()
     {
 
     }
 
-    public static void process()
+    public  void process()
     {
 
     }
