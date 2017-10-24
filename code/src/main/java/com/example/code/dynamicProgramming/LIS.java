@@ -51,7 +51,7 @@ public class LIS {
         // The max variable holds the result
         max_ref = 1;
 
-        // The function _lis() stores its result in max
+        // The function _lis() stores its result in mx
         _lis( arr, n);
 
         // returns max
