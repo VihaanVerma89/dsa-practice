@@ -30,7 +30,7 @@ public class RoadsNLibrary {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         q = Integer.parseInt(br.readLine());
-        ans = new int[q];
+        ans = new long[q];
 
         while (q != 0) {
             String line = br.readLine();
