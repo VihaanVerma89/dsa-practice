@@ -11,12 +11,12 @@ import java.util.StringTokenizer;
  * Created by vihaan on 01/11/17.
  */
 
-public class RoadsNLibrary {
+public class RoadsNLibrary1 {
 
     public static void main(String[] args) throws IOException {
-        RoadsNLibrary roadsNLibrary = new RoadsNLibrary();
-        roadsNLibrary.input();
-//        roadsNLibrary.testInput();
+        RoadsNLibrary1 roadsNLibrary = new RoadsNLibrary1();
+//        roadsNLibrary.input();
+        roadsNLibrary.testInput();
 //        roadsNLibrary.process();
         roadsNLibrary.printAns();
     }
@@ -42,9 +42,9 @@ public class RoadsNLibrary {
             cl = Integer.parseInt(st.nextToken());
             cr = Integer.parseInt(st.nextToken());
 
-            nodes = new LinkedList[n + 1];
+            nodes = new LinkedList[n+1];
 
-            visited = new boolean[n + 1];
+            visited = new boolean[n+1];
 
             int roads = m;
             while (roads != 0) {
@@ -52,11 +52,13 @@ public class RoadsNLibrary {
                 u = Integer.parseInt(st.nextToken());
                 v = Integer.parseInt(st.nextToken());
 
-                if (nodes[u] == null) {
+                if(nodes[u]==null)
+                {
                     nodes[u] = new LinkedList<>();
                 }
 
-                if (nodes[v] == null) {
+                if(nodes[v]==null)
+                {
                     nodes[v] = new LinkedList<>();
                 }
 
@@ -92,27 +94,29 @@ public class RoadsNLibrary {
         m = 2;
         cl = 91;
         cr = 84;
-        String[] lines = new String[]{
-                "8 2",
-                "2 9"
+        String [] lines = new String[]{
+            "8 2",
+            "2 9"
         };
 
 
-        nodes = new LinkedList[n + 1];
-        visited = new boolean[n + 1];
+        nodes = new LinkedList[n+1];
+        visited = new boolean[n+1];
 
         int roads = m;
-        int i = 0;
+        int i=0;
         while (roads != 0) {
             StringTokenizer st = new StringTokenizer(lines[i++]);
             u = Integer.parseInt(st.nextToken());
             v = Integer.parseInt(st.nextToken());
 
-            if (nodes[u] == null) {
+            if(nodes[u]==null)
+            {
                 nodes[u] = new LinkedList<>();
             }
 
-            if (nodes[v] == null) {
+            if(nodes[v]==null)
+            {
                 nodes[v] = new LinkedList<>();
             }
 
@@ -125,53 +129,47 @@ public class RoadsNLibrary {
 
     boolean[] visited;
 
-    private long[] ans;
-    private int ansIndex = 0;
-
+    private int[] ans;
+    private int ansIndex=0;
     public void process() {
 
         int cost1;
         int cost2;
-        long minCost = 0;
+        int minCost = 0;
         for (int i = 1; i < nodes.length; i++) {
             LinkedList<Integer> ll = nodes[i];
-            visited[i] = true;
-            if (ll != null) {
+            visited[i]=true;
+            if(ll!=null) {
                 Iterator<Integer> it = ll.iterator();
-                regionLen = 0;
                 while (it.hasNext()) {
                     int node = it.next();
                     if (!visited[node]) {
-
+                        regionLen=0;
                         dfs(node);
+                        cost1 = cl + (regionLen * cr);
+                        cost2 = (regionLen +1)* cl;
 
+                        if (cost1 < cost2) {
+                            minCost += cost1;
+                        } else if (cost2 < cost1) {
+
+                            minCost += cost2;
+                        } else {
+                            minCost += cost1;
+                        }
                     }
                 }
-                if (regionLen > 0) {
-
-                    cost1 = cl + (regionLen * cr);
-                    cost2 = (regionLen + 1) * cl;
-
-                    if (cost1 < cost2) {
-                        minCost += cost1;
-                    } else if (cost2 < cost1) {
-
-                        minCost += cost2;
-                    } else {
-                        minCost += cost1;
-                    }
-                }
-            } else {
-                minCost += cl;
             }
         }
 
-        int costLib = n * cl;
-        if (minCost < costLib) {
-            ans[ansIndex++] = minCost;
+        int costLib = n* cl;
+        if(minCost < costLib)
+        {
+            ans[ansIndex++]=minCost;
 //            System.out.println(minCost);
-        } else {
-            ans[ansIndex++] = costLib;
+        }
+        else{
+            ans[ansIndex++]=costLib;
 //            System.out.println(costLib);
         }
     }
@@ -180,21 +178,22 @@ public class RoadsNLibrary {
 
     public void dfs(int node) {
 
-        visited[node] = true;
-        regionLen++;
-        LinkedList<Integer> ll = nodes[node];
-        Iterator<Integer> it = ll.iterator();
-        while (it.hasNext()) {
-            int nextNode = it.next();
-            if (!visited[node]) {
+        if (!visited[node]) {
+            visited[node] = true;
+            regionLen++;
+            LinkedList<Integer> ll = nodes[node];
+            Iterator<Integer> it = ll.iterator();
+            while (it.hasNext()) {
+                int nextNode = it.next();
                 dfs(nextNode);
             }
         }
     }
 
-    private void printAns() {
+    private void printAns(){
 
-        for (int i = 0; i < ans.length; i++) {
+        for(int i=0;i<ans.length;i++)
+        {
             System.out.println(ans[i]);
         }
     }
