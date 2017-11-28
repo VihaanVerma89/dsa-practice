@@ -1,5 +1,7 @@
 package com.example.geeksforgeeks.ds.binaryTree.binaryTodoublyLL;
 
+import com.example.geeksforgeeks.ds.binaryTree.Node;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
