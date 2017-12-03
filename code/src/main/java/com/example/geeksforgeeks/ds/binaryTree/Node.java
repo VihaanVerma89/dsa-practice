@@ -13,14 +13,16 @@ public class Node {
             this.value=value;
         }
 
-        public void addLeftNode(Node node)
+        public Node addLeftNode(Node node)
         {
             leftNode=node;
+            return node;
         }
 
-        public void addRightNode(Node node)
+        public Node addRightNode(Node node)
         {
             rightNode=node;
+            return node;
         }
 
         public int getValue() {
