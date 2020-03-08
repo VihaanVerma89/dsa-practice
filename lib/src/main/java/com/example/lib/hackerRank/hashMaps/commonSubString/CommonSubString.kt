@@ -1,9 +1,9 @@
-package com.example.hackerRank.interviewPrep.hashMpa.commonSubString
+package com.example.lib.hackerRank.hashMaps.commonSubString
 
 import java.util.*
 
 
-private fun twoStrings(s1: String, s2: String) {
+private fun twoStrings(s1: String, s2: String): String {
     val m1 = getStringCharCountHashMap(s1)
     val m2 = getStringCharCountHashMap(s2)
 
@@ -14,11 +14,13 @@ private fun twoStrings(s1: String, s2: String) {
             break;
         }
     }
-    if (charFound) {
-        println("YES")
+    var result = ""
+    result = if (charFound) {
+        "YES"
     } else {
-        println("NO")
+        "NO"
     }
+    return result
 }
 
 private fun getStringCharCountHashMap(s: String): HashMap<Char, Int> {
