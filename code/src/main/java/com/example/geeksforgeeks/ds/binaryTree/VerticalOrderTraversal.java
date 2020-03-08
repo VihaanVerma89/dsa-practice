@@ -1,12 +1,5 @@
 package com.example.geeksforgeeks.ds.binaryTree;
 
-import android.graphics.DashPathEffect;
-import android.provider.DocumentsContract;
-import android.support.v7.view.menu.ListMenuPresenter;
-
-import com.example.code.DpGetMin;
-
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;

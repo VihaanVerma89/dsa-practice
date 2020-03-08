@@ -3,54 +3,51 @@ package com.example.hackerRank.interviewPrep.hashMpa.commonSubString
 import java.util.*
 
 
-class CommonSubString {
+private fun twoStrings(s1: String, s2: String) {
+    val m1 = getStringCharCountHashMap(s1)
+    val m2 = getStringCharCountHashMap(s2)
 
-    private fun twoStrings(s1: String, s2: String) {
-        val m1 = getStringCharCountHashMap(s1)
-        val m2 = getStringCharCountHashMap(s2)
-
-        var charFound = false
-        for (key in m1.keys) {
-            if (m2.contains(key)) {
-                charFound = true
-                break;
-            }
+    var charFound = false
+    for (key in m1.keys) {
+        if (m2.contains(key)) {
+            charFound = true
+            break;
         }
-        if (charFound) {
-            println("YES")
+    }
+    if (charFound) {
+        println("YES")
+    } else {
+        println("NO")
+    }
+}
+
+private fun getStringCharCountHashMap(s: String): HashMap<Char, Int> {
+    val map = hashMapOf<Char, Int>()
+    var value = Int.MAX_VALUE
+    for (c in s) {
+        if (map.contains(c)) {
+            value = map[c]!!
+            value++
         } else {
-            println("NO")
+            value = 1
         }
+        map[c] = value
     }
+    return map
+}
 
-    private fun getStringCharCountHashMap(s: String): HashMap<Char, Int> {
-        val map = hashMapOf<Char, Int>()
-        var value = Int.MAX_VALUE
-        for (c in s) {
-            if (map.contains(c)) {
-                value = map[c]!!
-                value++
-            } else {
-                value = 1
-            }
-            map[c] = value
-        }
-        return map
-    }
+fun main(args: Array<String>) {
+    val scan = Scanner(System.`in`)
 
-    fun main(args: Array<String>) {
-        val scan = Scanner(System.`in`)
+    val q = scan.nextLine().trim().toInt()
 
-        val q = scan.nextLine().trim().toInt()
+    for (qItr in 1..q) {
+        val s1 = scan.nextLine()
 
-        for (qItr in 1..q) {
-            val s1 = scan.nextLine()
+        val s2 = scan.nextLine()
 
-            val s2 = scan.nextLine()
+        val result = twoStrings(s1, s2)
 
-            val result = twoStrings(s1, s2)
-
-            println(result)
-        }
+        println(result)
     }
 }
