@@ -1,10 +1,9 @@
-package com.example.geeksforgeeks.dynamicProgramming;
+package com.example.lib.geeksforgeeks.dynamicProgramming;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 /**
  * Created by vihaanverma on 12/12/17.

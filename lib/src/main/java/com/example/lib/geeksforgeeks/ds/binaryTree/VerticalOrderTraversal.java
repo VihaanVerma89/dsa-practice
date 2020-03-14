@@ -1,4 +1,4 @@
-package com.example.geeksforgeeks.ds.binaryTree;
+package com.example.lib.geeksforgeeks.ds.binaryTree;
 
 import java.util.Iterator;
 import java.util.LinkedList;

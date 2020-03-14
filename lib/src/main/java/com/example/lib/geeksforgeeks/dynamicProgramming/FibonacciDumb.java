@@ -1,4 +1,4 @@
-package com.example.geeksforgeeks.dynamicProgramming;
+package com.example.lib.geeksforgeeks.dynamicProgramming;
 
 import java.io.BufferedReader;
 import java.io.IOException;

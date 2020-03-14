@@ -1,4 +1,4 @@
-package com.example.geeksforgeeks.ds.arrays;
+package com.example.lib.geeksforgeeks.ds.arrays;
 
 import java.util.Scanner;
 

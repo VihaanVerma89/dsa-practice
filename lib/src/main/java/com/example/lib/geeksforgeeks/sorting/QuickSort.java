@@ -1,4 +1,4 @@
-package com.example.geeksforgeeks.sorting;
+package com.example.lib.geeksforgeeks.sorting;
 
 /**
  * Created by vihaanverma on 10/04/18.

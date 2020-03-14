@@ -1,4 +1,4 @@
-package com.example.geeksforgeeks.dynamicProgramming;
+package com.example.lib.geeksforgeeks.dynamicProgramming;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * Created by vihaan on 09/10/17.
  */
 
-public class FibonacciMemoization {
+public class FibonacciTabular {
 
     public static void main(String[] args) throws IOException {
         FibonacciMemoization fibonacciDumb = new FibonacciMemoization();
@@ -29,6 +29,7 @@ public class FibonacciMemoization {
         System.out.println("end time: " + endTime);
 
         long diff = endTime - startTime;
+
         System.out.println("time taken: " + diff);
     }
 
@@ -40,19 +41,116 @@ public class FibonacciMemoization {
 
     public long fibonacci(int n) {
 
-        if(ans[n] != 0)
+        ans[0]=0;
+        ans[1]=1;
+
+        for(long i=2; i<=n;i++)
         {
-            return ans[n];
+           ans[(int)i]= ans[(int)i-1]+ans[(int)i-2];
         }
 
-        if (n == 0) {
-            return 0;
-        } else if (n == 1) {
-            return 1;
-        }
-
-        long sum = fibonacci(n - 1) + fibonacci(n - 2);
-        ans[n]=sum;
-        return sum;
+        return ans[n];
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

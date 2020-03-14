@@ -1,6 +1,5 @@
-package com.example.geeksforgeeks.ds.binaryTree;
+package com.example.lib.geeksforgeeks.ds.binaryTree;
 
-import java.util.Deque;
 import java.util.LinkedList;
 
 /**

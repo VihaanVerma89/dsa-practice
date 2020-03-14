@@ -1,4 +1,4 @@
-package com.example.geeksforgeeks.arrays;
+package com.example.lib.geeksforgeeks.arrays;
 
 public class SearchInSortedPivotedArray {
 
