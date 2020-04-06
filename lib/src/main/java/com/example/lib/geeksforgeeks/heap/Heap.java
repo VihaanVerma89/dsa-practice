@@ -1,4 +1,4 @@
-package com.example.lib.geeksforgeeks.ds.heap;
+package com.example.lib.geeksforgeeks.heap;
 
 /**
  * Created by vihaanverma on 06/12/17.

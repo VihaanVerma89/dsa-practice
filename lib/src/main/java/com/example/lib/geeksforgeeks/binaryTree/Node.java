@@ -1,4 +1,4 @@
-package com.example.lib.geeksforgeeks.ds.binaryTree;
+package com.example.lib.geeksforgeeks.binaryTree;
 
 /**
  * Created by vihaanverma on 24/11/17.

@@ -1,4 +1,4 @@
-package com.example.lib.geeksforgeeks.ds.arrays;
+package com.example.lib.geeksforgeeks.arrays;
 
 import java.util.*;
 

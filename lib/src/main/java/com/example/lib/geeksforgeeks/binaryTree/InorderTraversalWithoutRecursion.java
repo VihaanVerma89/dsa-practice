@@ -1,4 +1,4 @@
-package com.example.lib.geeksforgeeks.ds.binaryTree;
+package com.example.lib.geeksforgeeks.binaryTree;
 
 import java.util.LinkedList;
 
@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * Created by vihaanverma on 25/11/17.
  */
 
-public class InorderTraversalWithoutRecursionWrong {
+public class InorderTraversalWithoutRecursion {
 
     public static void main(String[] args) {
 
@@ -38,35 +38,24 @@ public class InorderTraversalWithoutRecursionWrong {
         if (node != null) {
             stack.push(node);
 
-            Node poppedNode = null;
-            while (node != null) {
+            while (stack.size() > 0) {
 
-                while (node.getLeftNode() != null && poppedNode != node.getLeftNode()) {
+                while (node!=null && node.getLeftNode() != null )
+                {
                     node = node.getLeftNode();
                     stack.push(node);
                 }
 
-                poppedNode = popNode(stack);
-                if (poppedNode != null) {
-                    System.out.println(poppedNode.getValue());
+                node = stack.pop();
+                System.out.print(node.getValue()+"-");
 
-                    if (poppedNode.getRightNode() != null) {
-                        node = node.getRightNode();
-                        stack.push(node);
-                    } else {
-                        node = stack.peek();
-                    }
+                if (node.getRightNode() != null) {
+                    node = node.getRightNode();
+                    stack.push(node);
+                } else {
+                    node = null;
                 }
             }
         }
     }
-
-    private static Node popNode(LinkedList<Node> stack) {
-        Node node = null;
-        if (stack.size() > 0) {
-            node = stack.pop();
-        }
-        return node;
-    }
-
 }
