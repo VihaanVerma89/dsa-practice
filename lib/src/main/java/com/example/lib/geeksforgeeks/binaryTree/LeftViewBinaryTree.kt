@@ -10,22 +10,29 @@ class LeftViewBinaryTree {
         val q = LinkedList<Node>()
         q.add(root)
 
-        var level = 0
         while (q.isNotEmpty()) {
-            val value = q.remove()
-            if (value != null) {
-                val leftNode = value.leftNode
-                if (leftNode != null) {
-                    q.add(leftNode)
+            val levelNodeCount = q.size
+
+            for (i in 0 until levelNodeCount) {
+                val node = q.remove()
+                if (i == 0) {
+                    print(node.value)
                 }
-                val rightNode = value.rightNode
-                if (rightNode != null) {
-                    q.add(rightNode)
+
+                if (node.leftNode != null) {
+                    q.add(node.leftNode)
                 }
+
+                if (node.rightNode != null) {
+                    q.add(node.rightNode)
+                }
+
             }
+
         }
     }
 }
+
 
 fun main() {
 
