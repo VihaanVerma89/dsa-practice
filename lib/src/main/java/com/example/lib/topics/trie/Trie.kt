@@ -1,8 +1,9 @@
-package com.example.lib.topis.trie
+package com.example.lib.topics.trie
 
 class Trie() {
 
-    private val root: TrieNode = TrieNode('0')
+    private val root: TrieNode =
+        TrieNode('0')
 
     fun insert(word: String) {
 
@@ -71,8 +72,8 @@ fun main() {
     trie.insert("mask")
     trie.insert("mast")
 
-    printIfTrieContains(trie,"man")
-    printIfTrieContains(trie,"make")
-    printIfTrieContains(trie,"maks")
-    printIfTrieContains(trie,"mask")
+    printIfTrieContains(trie, "man")
+    printIfTrieContains(trie, "make")
+    printIfTrieContains(trie, "maks")
+    printIfTrieContains(trie, "mask")
 }

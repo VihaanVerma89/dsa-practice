@@ -1,4 +1,4 @@
-package com.example.lib.topis.trie
+package com.example.lib.topics.trie
 
 
 class TrieNode(val node: Char) {
