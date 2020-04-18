@@ -1,31 +1,37 @@
 package com.example.lib.geeksforgeeks.arrays
 
 
-fun sort012(a: IntArray) {
+fun sort012(intArray: IntArray) {
+
     var lo = 0
-    var hi = a.size - 1
-    var mid = lo
-    while (lo <= hi) {
-        when (a[mid]) {
+    var hi = intArray.size.minus(1)
+    var index = 0
+    while (index <= hi) {
+        val value = intArray[index]
+        when (value) {
             0 -> {
-                swapElement(a,a[mid], a[lo])
+                swapValues(intArray, index, lo)
                 lo++
+                index++
             }
             1 -> {
-                mid++
+                index++
             }
             2 -> {
-                swapElement(a, a[mid], a[hi])
+                swapValues(intArray, index, hi)
                 hi--
             }
         }
+        val contentToString = intArray.contentToString()
+        println(contentToString)
     }
+
 }
 
-fun swapElement(arr: IntArray, i: Int, j: Int) {
-    val temp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = temp
+fun swapValues(array: IntArray, fromIndex: Int, toIndex: Int) {
+    val temp = array[toIndex]
+    array[toIndex] = array[fromIndex]
+    array[fromIndex] = temp
 }
 
 fun main() {
@@ -34,3 +40,5 @@ fun main() {
     println("Array after seggregation ")
     println(arr.contentToString())
 }
+
+

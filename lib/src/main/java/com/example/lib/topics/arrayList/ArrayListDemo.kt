@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays
+package com.example.lib.topics.arrayList
 
 fun main(){
 
