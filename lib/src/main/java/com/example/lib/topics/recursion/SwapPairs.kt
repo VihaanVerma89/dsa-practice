@@ -1,6 +1,7 @@
 package com.example.lib.topics.recursion
 
 
+//https://leetcode.com/explore/learn/card/recursion-i/250/principle-of-recursion/1681/
 class ListNode(var `val`: Int) {
     var next: ListNode? = null
     override fun toString(): String {
