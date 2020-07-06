@@ -9,6 +9,7 @@ class LetterCombinationsofaPhoneNumber {
         r: ArrayList<String>
     ): ArrayList<String> {
 
+        var resultR = arrayListOf<String>()
         if (digits.isEmpty()) {
             return arrayListOf()
         } else if (digits.length == 1) {
@@ -25,16 +26,26 @@ class LetterCombinationsofaPhoneNumber {
             val result = letterCombinationsRec(m, dropLast, r)
             val lastChar = digits.last()
             val lastCharValues: String? = m[lastChar + ""]
-            for (i in result) {
-                if (lastCharValues != null) {
+            var size = result.size - 1
+            if (lastCharValues != null) {
+                while (size >= 0) {
                     for (c in lastCharValues) {
-                        val cs = i + c
-                        r.add(cs)
+                        val cs = result[size] + c
+                        resultR.add(cs)
                     }
+                    size--
                 }
             }
+//            for (i in result) {
+//                if (lastCharValues != null) {
+//                    for (c in lastCharValues) {
+//                        val cs = i + c
+//                        r.add(cs)
+//                    }
+//                }
+//            }
         }
-        return r
+        return resultR
     }
 
     fun letterCombinations(digits: String): List<String> {
@@ -57,7 +68,9 @@ class LetterCombinationsofaPhoneNumber {
 fun main() {
 
     val c = LetterCombinationsofaPhoneNumber()
-    val digits = "234"
+//    val digits = "234"
+    val digits = "23"
     val letterCombinations = c.letterCombinations(digits)
-    println(letterCombinations.joinToString { "," })
+    val joinToString = letterCombinations.joinToString(",")
+    println(joinToString)
 }
