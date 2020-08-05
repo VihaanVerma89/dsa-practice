@@ -2,19 +2,52 @@ package com.example.lib.topics.arrays
 
 class SubarraySumEqualsK {
 
-//    fun subarraySum(nums: IntArray, k: Int): Int {
-//        var count = 0
-//        for (start in nums.indices) {
-//            for (end in start + 1..nums.size) {
-//                var sum = 0
-//                for (i in start until end) sum += nums[i]
-//                if (sum == k) count++
-//            }
-//        }
-//        return count
-//    }
 
-    fun subarraySum(nums: IntArray, k: Int): Int {
+    fun subarraySumWithSumArray(nums: IntArray, k: Int): Int {
+        var count = 0
+
+        val sumArray = IntArray(nums.size)
+        for (i in nums.indices) {
+            if (i == 0) {
+                sumArray[i] = 0
+            } else {
+                sumArray[i] = nums[i - 1] + sumArray[i - 1]
+            }
+        }
+
+        for (i in nums.indices) {
+            for (j in nums.size - 1 downTo i) {
+                val r = sumArray[j] - sumArray[i] + nums[j]
+                if (r == k) {
+                    count++
+                }
+            }
+        }
+
+        return count
+    }
+
+
+    fun subarraySumHashMap(nums: IntArray, k: Int): Int {
+        var count = 0
+        var sum = 0
+
+        val map = hashMapOf<Int, Int>()
+        map.put(0, 1)
+
+        for (i in nums.indices) {
+            sum += nums[i]
+
+            if (map.containsKey(sum - k)) {
+                count += map[sum - k]!!
+            }
+
+            map.put(sum, map.getOrDefault(sum, 0) + 1)
+        }
+        return count
+    }
+
+    fun subarraySum3Loops(nums: IntArray, k: Int): Int {
         var count = 0
 
         var sum = 0
