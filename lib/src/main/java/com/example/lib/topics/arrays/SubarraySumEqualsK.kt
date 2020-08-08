@@ -134,11 +134,11 @@ fun main() {
 
 //    val a = intArrayOf(1, 2, 3, 4)
     val k = -93
-//    val a = intArrayOf(1, 2, 3)
+    val a = intArrayOf(1, 2, 3)
 //    val a = intArrayOf(1, 2, 1, 2, 1)
     val subarraySumEqualsK = SubarraySumEqualsK()
 //    val subarraySum = subarraySumEqualsK.subarraySum(a, 3)
-    val subarraySum = subarraySumEqualsK.subarraySum(a, k)
-    println(subarraySum)
+//    val subarraySum = subarraySumEqualsK.subarraySum(a, k)
+//    println(subarraySum)
 
 }
