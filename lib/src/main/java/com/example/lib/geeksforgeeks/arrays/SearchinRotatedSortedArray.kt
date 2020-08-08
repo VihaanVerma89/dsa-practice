@@ -2,7 +2,7 @@ package com.example.lib.geeksforgeeks.arrays
 
 class SearchinRotatedSortedArray {
 
-    fun findMin2(nums: IntArray): Int {
+    fun findMin(nums: IntArray): Int {
         var min = Int.MAX_VALUE
         if (nums.isEmpty()) {
 
