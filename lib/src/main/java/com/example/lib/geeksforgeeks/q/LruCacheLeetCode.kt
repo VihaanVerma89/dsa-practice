@@ -1,5 +1,6 @@
 package com.example.lib.geeksforgeeks.q
 
+@Suppress("TYPE_INFERENCE_ONLY_INPUT_TYPES_WARNING")
 class LruCacheLeetCode(val capacity: Int) {
 
     val cache = hashMapOf<Int, DLinkNode>()
@@ -45,7 +46,7 @@ class LruCacheLeetCode(val capacity: Int) {
             size++
             if (size > capacity) {
                 val popTail = popTail()
-                cache.remove(popTail)
+                cache.remove<Any, DLinkNode>(popTail)
                 size--
             }
         } else {

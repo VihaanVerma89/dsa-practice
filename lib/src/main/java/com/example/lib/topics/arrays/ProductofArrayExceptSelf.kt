@@ -1,6 +1,24 @@
 package com.example.lib.topics.arrays
 
 class ProductofArrayExceptSelf {
+    fun productExceptSelf0n2(nums: IntArray): IntArray {
+
+        val productArray = IntArray(nums.size)
+        var product = 1
+        for (i in nums.withIndex()) {
+            productArray[i.index] = 1
+            for (j in nums.withIndex()) {
+                if (i.index == j.index) {
+                    //
+                } else {
+                    productArray[i.index] *= nums[j.index]
+                }
+            }
+        }
+
+        return productArray
+    }
+
     fun productExceptSelf1(nums: IntArray): IntArray {
 
         val length = nums.size
@@ -14,7 +32,7 @@ class ProductofArrayExceptSelf {
         }
 
         r[length - 1] = 1
-        for (i in length - 2 downTo  0) {
+        for (i in length - 2 downTo 0) {
             r[i] = nums[i + 1] * r[i + 1]
         }
 
