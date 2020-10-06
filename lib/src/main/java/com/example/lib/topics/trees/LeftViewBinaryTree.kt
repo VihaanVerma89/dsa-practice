@@ -1,5 +1,7 @@
-package com.example.lib.geeksforgeeks.binaryTree
+package com.example.lib.topics.trees
 
+import com.example.lib.geeksforgeeks.binaryTree.BinaryTree
+import com.example.lib.geeksforgeeks.binaryTree.Node
 import java.util.*
 
 class LeftViewBinaryTree {
