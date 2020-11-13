@@ -1,5 +1,7 @@
 package com.example.lib.topics.linkedList
 
+import java.util.*
+
 
 class FlattenaMultilevelDoublyLinkedList {
 
@@ -20,55 +22,43 @@ class FlattenaMultilevelDoublyLinkedList {
         override fun toString(): String {
             return "Node(`val`=$`val`)"
         }
-
-
     }
 
-    //    fun flatten(head: Node?): Node? {
-//        if (head == null) return head
-//        val pseudoHead = Node(0, null, head, null)
-//        var curr: Node
-//        var prev = pseudoHead
-//        val stack: Deque<Node> = ArrayDeque()
-//        stack.push(head)
-//        while (!stack.isEmpty()) {
-//            curr = stack.pop()
-//            prev.next = curr
-//            curr.prev = prev
-//            if (curr.next != null) stack.push(curr.next)
-//            if (curr.child != null) {
-//                stack.push(curr.child)
-//                // don't forget to remove all child pointers.
-//                curr.child = null
-//            }
-//            prev = curr
-//        }
-//        // detach the pseudo node from the result
-//        pseudoHead.next!!.prev = null
-//        return pseudoHead.next
-//    }
-    open fun flatten(head: Node?): Node? {
-        if (head == null) return head
-        // pseudo head to ensure the `prev` pointer is never none
-        val pseudoHead = Node(0, null, head, null)
-        flattenDFS(pseudoHead, head)
+    fun flatten(root: Node?): Node? {
 
-        // detach the pseudo head from the real head
-        pseudoHead.next!!.prev = null
-        return pseudoHead.next
-    }
+        root?.let {
+            var node = root
+            val s = Stack<Node>()
+            while (node != null) {
 
-    /* return the tail of the flatten list */
-    fun flattenDFS(prev: Node, curr: Node?): Node {
-        if (curr == null) return prev
-        curr.prev = prev
-        prev.next = curr
-
-        // the curr.next would be tempered in the recursive function
-        val tempNext = curr.next
-        val tail = flattenDFS(curr, curr.child)
-        curr.child = null
-        return flattenDFS(tail, tempNext)
+                val next = node.next
+                val child = node.child
+                if (child == null && next != null) {
+                    node = next
+                } else if (child != null && next == null) {
+                    node.child = null
+                    node.next = child
+                    child.prev = node
+                    node = child
+                } else if (child != null && next != null) {
+                    node.next = child
+                    child.prev = node
+                    node.child = null
+                    s.push(next)
+                    node = child
+                } else if (child == null && next == null) {
+                    if (s.isNotEmpty()) {
+                        val pop = s.pop()
+                        node.next = pop
+                        pop.prev = node
+                        node = pop
+                    } else {
+                        node = null
+                    }
+                }
+            }
+        }
+        return root
     }
 
 }
@@ -77,34 +67,64 @@ fun main() {
 
     val node1 = FlattenaMultilevelDoublyLinkedList.Node()
     node1.`val` = 1
+
     val node2 = FlattenaMultilevelDoublyLinkedList.Node()
     node2.`val` = 2
     node1.next = node2
+    node2.prev = node1
 
     val node3 = FlattenaMultilevelDoublyLinkedList.Node()
     node3.`val` = 3
     node2.next = node3
+    node3.prev = node2
+
+
     val node4 = FlattenaMultilevelDoublyLinkedList.Node()
     node4.`val` = 4
     node3.next = node4
+    node4.prev = node3
+
     val node5 = FlattenaMultilevelDoublyLinkedList.Node()
     node5.`val` = 5
-    node2.child = node5
+    node4.next = node5
+    node5.prev = node4
+
+
     val node6 = FlattenaMultilevelDoublyLinkedList.Node()
     node6.`val` = 6
     node5.next = node6
+    node6.prev = node5
+
 
     val node7 = FlattenaMultilevelDoublyLinkedList.Node()
     node7.`val` = 7
-    node6.next = node7
+    node3.child = node7
 
     val node8 = FlattenaMultilevelDoublyLinkedList.Node()
     node8.`val` = 8
-    node6.child = node8
+    node7.next = node8
+    node8.prev = node7
 
     val node9 = FlattenaMultilevelDoublyLinkedList.Node()
     node9.`val` = 9
     node8.next = node9
+    node9.prev = node8
+
+
+    val node10 = FlattenaMultilevelDoublyLinkedList.Node()
+    node10.`val` = 10
+    node9.next = node10
+    node10.prev = node9
+
+    val node11 = FlattenaMultilevelDoublyLinkedList.Node()
+    node11.`val` = 11
+    node8.child = node11
+
+    val node12 = FlattenaMultilevelDoublyLinkedList.Node()
+    node12.`val` = 12
+    node11.next = node12
+    node12.prev = node11
+
 
     val i = FlattenaMultilevelDoublyLinkedList()
     var flatten = i.flatten(node1)
