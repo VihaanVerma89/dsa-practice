@@ -1,14 +1,45 @@
 package com.example.lib.topics.twoPointerApproach
 
 import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader
+import java.io.StringBufferInputStream
+import java.lang.StringBuilder
+import java.util.*
 
 class MinimumRemovetoMakeValidParentheses {
+
+    fun minRemoveToMakeValid(input: String): String {
+        val indexToRemove = hashSetOf<Int>()
+        val stack = Stack<Int>()
+        for (i in input.withIndex()) {
+            val c = input[i.index]
+            if (c == '(') {
+                stack.push(i.index)
+            } else if (c == ')') {
+                if (stack.isEmpty()) {
+                    indexToRemove.add(i.index)
+                } else {
+                    stack.pop()
+                }
+            }
+        }
+        while (stack.isNotEmpty()) {
+            indexToRemove.add(stack.pop())
+        }
+
+        val stringBuilder = StringBuilder()
+        for (i in input.withIndex()) {
+            if (!indexToRemove.contains(i.index)) {
+                stringBuilder.append(i.value)
+            }
+        }
+        return stringBuilder.toString()
+    }
 
     /*
     lee(t(c)o)de)
            se
     */
-    fun minRemoveToMakeValid(input: String): String {
+    fun minRemoveToMakeValid1(input: String): String {
         var s = input
         if (s.isNotEmpty()) {
             var start = 0
