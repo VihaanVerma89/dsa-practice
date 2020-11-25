@@ -12,17 +12,18 @@ class SpiralMatrix {
             var r = 0
             var c = 0
 
-            var node = "$r,$c"
-            visitedHashSet.add(node)
-            spiralOrder.add(matrix[r][c])
 
             while (visitedHashSet.size < matrixSize) {
+
+                var node = "$r,$c"
+                if (!visitedHashSet.contains(node)) {
+                    visitedHashSet.add(node)
+                    spiralOrder.add(matrix[r][c])
+                }
 
                 if (direction == "r") {
                     if (canMoveRight(matrix, visitedHashSet, r, c)) {
                         c += 1
-                        visitedHashSet.add("$r,$c")
-                        spiralOrder.add(matrix[r][c])
                     } else {
                         direction = "d"
                     }
@@ -31,8 +32,6 @@ class SpiralMatrix {
                 if (direction == "d") {
                     if (canMoveDown(matrix, visitedHashSet, r, c)) {
                         r += 1
-                        visitedHashSet.add("$r,$c")
-                        spiralOrder.add(matrix[r][c])
                     } else {
                         direction = "l"
                     }
@@ -41,8 +40,6 @@ class SpiralMatrix {
                 if (direction == "l") {
                     if (canMoveLeft(matrix, visitedHashSet, r, c)) {
                         c -= 1
-                        visitedHashSet.add("$r,$c")
-                        spiralOrder.add(matrix[r][c])
                     } else {
                         direction = "u"
                     }
@@ -51,8 +48,6 @@ class SpiralMatrix {
                 if (direction == "u") {
                     if (canMoveUp(matrix, visitedHashSet, r, c)) {
                         r -= 1
-                        visitedHashSet.add("$r,$c")
-                        spiralOrder.add(matrix[r][c])
                     } else {
                         direction = "r"
                     }
@@ -66,12 +61,7 @@ class SpiralMatrix {
         var canMoveRight = false
         val nc = c + 1
         val nextNode = "$r,$nc"
-        if (nc < matrix[r].size && !visitedHashSet.contains(nextNode)) {
-            canMoveRight = true
-        } else {
-            // can't move right
-            canMoveRight = false
-        }
+        canMoveRight = nc < matrix[r].size && !visitedHashSet.contains(nextNode)
         return canMoveRight
     }
 
@@ -79,11 +69,7 @@ class SpiralMatrix {
         var canMoveDown = false
         val nr = r + 1
         val nextNode = "$nr,$c"
-        if (nr < matrix.size && !visitedHashSet.contains(nextNode)) {
-            canMoveDown = true
-        } else {
-            canMoveDown = false
-        }
+        canMoveDown = nr < matrix.size && !visitedHashSet.contains(nextNode)
         return canMoveDown
     }
 
@@ -91,12 +77,7 @@ class SpiralMatrix {
         var canMoveLeft = false
         val nc = c - 1
         val nextNode = "$r,$nc"
-        if (nc >= 0 && !visitedHashSet.contains(nextNode)) {
-            canMoveLeft = true
-        } else {
-            // can't move right
-            canMoveLeft = false
-        }
+        canMoveLeft = nc >= 0 && !visitedHashSet.contains(nextNode)
         return canMoveLeft
     }
 
@@ -104,11 +85,7 @@ class SpiralMatrix {
         var canMoveUp = false
         val nr = r - 1
         val nextNode = "$nr,$c"
-        if (nr >= 0 && !visitedHashSet.contains(nextNode)) {
-            canMoveUp = true
-        } else {
-            canMoveUp = false
-        }
+        canMoveUp = nr >= 0 && !visitedHashSet.contains(nextNode)
         return canMoveUp
     }
 
