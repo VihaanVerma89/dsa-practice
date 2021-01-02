@@ -156,7 +156,7 @@ class MyLinkedList() {
 
 fun main() {
 //    Your MyLinkedList object will be instantiated and called as such:
-    var obj = MyDoublyLinkedList()
+    var obj = MyLinkedList()
     obj.addAtHead(84)
     obj.printList()
     obj.addAtTail(2)
