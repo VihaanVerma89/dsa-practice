@@ -1,0 +1,27 @@
+Array
+0 1 2 3 4 5 6
+* indexed is used to access random elements
+* index are adjacent. increase to go ahead , decrease to go to previous.
+* size is limited
+* you can get index out of bound exception for invalid values
+
+Stack
+6 <- top
+5
+4
+3
+2
+1
+0
+* random element access is not possible
+* element are added / removed from top
+* it is a LIFO [Last in first out] structure
+
+
+Queue
+0 1 2 3 4 5 6
+f           r
+
+* queue is FIFO[First in first out]
+
+
