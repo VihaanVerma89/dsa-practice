@@ -10,12 +10,12 @@ class TreeNode(var `val`: Int) {
 class BinaryTreePreorderTraversal {
 
     // +ab
-    fun preorderTraversal(root: TreeNode?): List<Int> {
-        val list = arrayListOf<Int>()
+//    fun preorderTraversal(root: TreeNode?): List<Int> {
+//        val list = arrayListOf<Int>()
+//
+//        if (root != null) {
+//
+//        }
 
-        if (root != null) {
-
-        }
-
-    }
+//    }
 }
