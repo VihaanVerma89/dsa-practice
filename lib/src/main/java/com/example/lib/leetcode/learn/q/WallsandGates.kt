@@ -11,10 +11,12 @@ class WallsandGates {
     fun wallsAndGates(rooms: Array<IntArray>): Unit {
 
         // find the gate
+        // O(rc) * O(rc)
         for (ri in rooms.withIndex()) {
             for (ci in ri.value.withIndex()) {
                 if (ci.value == gate) {
                     // run bfs from each gate
+                    // O(rc)
                     gateBfs(rooms, ri.index, ci.index)
                 }
             }
@@ -23,6 +25,7 @@ class WallsandGates {
     }
 
     // for each gate fill values into nodes
+    // rc/4 *
     fun gateBfs(rooms: Array<IntArray>, gr: Int, gc: Int): Unit {
         val rows = rooms.size
         val cols = rooms[0].size
@@ -36,9 +39,15 @@ class WallsandGates {
 
         var b = 0
 
+
+        // 1 node has 4 neighbors
+        // q increase by 4 for every node
+        // q will not be empty for rc/4 times
+        // O(rc)
         while (q.isNotEmpty()) {
             val size = q.size
-            // process node for given b
+
+            // O(4)
             for (i in 0 until size) {
 
                 val poll = q.poll()
