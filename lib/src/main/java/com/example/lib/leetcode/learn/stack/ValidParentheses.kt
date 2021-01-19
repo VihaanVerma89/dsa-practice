@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.learn.q
+package com.example.lib.leetcode.learn.stack
 
 import java.util.*
 
