@@ -29,6 +29,6 @@ class MaxConsecutiveOnes {
 fun main() {
     val m = MaxConsecutiveOnes()
     val a = intArrayOf()
-    max = m.findMaxConsecutiveOnes(a)
+    val max = m.findMaxConsecutiveOnes(a)
     println("max consecutive : $max")
 }
