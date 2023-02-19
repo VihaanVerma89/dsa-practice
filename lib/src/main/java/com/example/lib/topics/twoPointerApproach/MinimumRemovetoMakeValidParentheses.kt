@@ -1,6 +1,5 @@
 package com.example.lib.topics.twoPointerApproach
 
-import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader
 import java.io.StringBufferInputStream
 import java.lang.StringBuilder
 import java.util.*
