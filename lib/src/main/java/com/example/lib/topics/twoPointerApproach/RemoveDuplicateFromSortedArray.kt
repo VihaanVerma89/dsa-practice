@@ -1,7 +1,7 @@
 package com.example.lib.topics.twoPointerApproach
 
 
-fun removeDuplicates(nums: IntArray): Int {
+fun removeDuplicatesSol(nums: IntArray): Int {
 
     var i = 0
     if (nums.size > 1) {
@@ -23,6 +23,26 @@ fun removeDuplicates(nums: IntArray): Int {
     }
 
     return i
+}
+
+
+fun removeDuplicates(nums: IntArray): Int {
+    var i = 0
+    var j = 0
+    var u = 1
+
+    while (j != nums.size) {
+        if (nums[i] == nums[j]) {
+            // duplicate
+            j++
+        } else {
+            // not duplicate
+            i++
+            u++
+            nums[i] = nums[j]
+        }
+    }
+    return u
 }
 
 fun swap(nums: IntArray, to: Int, from: Int) {
