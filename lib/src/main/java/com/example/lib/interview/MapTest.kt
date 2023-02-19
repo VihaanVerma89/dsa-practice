@@ -3,6 +3,7 @@ package com.example.lib.interview
 
 class MapTest {
 
+
     fun getAnsMap(categoriesMap: HashMap<String, ArrayList<String>>, dateMap: HashMap<String, List<Int>>): HashMap<String, Int> {
         val ansMap = hashMapOf<String, Int>()
 
