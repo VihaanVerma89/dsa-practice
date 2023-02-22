@@ -26,6 +26,9 @@ fun removeDuplicatesSol(nums: IntArray): Int {
 }
 
 
+/*
+* https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/727/
+* */
 fun removeDuplicates(nums: IntArray): Int {
     var i = 0
     var j = 0
