@@ -1,6 +1,7 @@
-package com.example.lib.leetcode.learn.linkedlist
+package com.example.lib.topics.linkedList.mylinkedlist
 
-class MyLinkedList() {
+// https://leetcode.com/explore/learn/card/linked-list/209/singly-linked-list/1290/
+class MyLinkedListDec2020() {
 
     /** Initialize your data structure here. */
     class Node(var value: Int) {
@@ -156,7 +157,7 @@ class MyLinkedList() {
 
 fun main() {
 //    Your MyLinkedList object will be instantiated and called as such:
-    var obj = MyLinkedList()
+    var obj = MyLinkedListDec2020()
     obj.addAtHead(84)
     obj.printList()
     obj.addAtTail(2)
