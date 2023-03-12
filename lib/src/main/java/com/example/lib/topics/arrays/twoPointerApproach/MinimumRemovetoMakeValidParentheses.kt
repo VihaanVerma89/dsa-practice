@@ -1,4 +1,4 @@
-package com.example.lib.topics.twoPointerApproach
+package com.example.lib.topics.arrays.twoPointerApproach
 
 import java.io.StringBufferInputStream
 import java.lang.StringBuilder

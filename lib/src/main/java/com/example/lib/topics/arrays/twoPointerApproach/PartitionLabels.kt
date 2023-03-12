@@ -1,4 +1,4 @@
-package com.example.lib.topics.twoPointerApproach
+package com.example.lib.topics.arrays.twoPointerApproach
 
 class PartitionLabels {
     fun partitionLabels(s: String): List<Int> {

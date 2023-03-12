@@ -1,4 +1,4 @@
-package com.example.lib.topics.twoPointerApproach
+package com.example.lib.topics.arrays.twoPointerApproach
 
 
 fun removeDuplicatesSol(nums: IntArray): Int {
@@ -29,7 +29,7 @@ fun removeDuplicatesSol(nums: IntArray): Int {
 /*
 * https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/727/
 * */
-fun removeDuplicates(nums: IntArray): Int {
+fun removeDuplicates19thFeb23(nums: IntArray): Int {
     var i = 0
     var j = 0
     var u = 1
@@ -46,6 +46,36 @@ fun removeDuplicates(nums: IntArray): Int {
         }
     }
     return u
+}
+
+
+/*
+
+[0,0,1,1,1,2,2,3,3,4]
+
+[0,,1,1,1,2,2,3,3,4]
+
+*/
+fun removeDuplicates(nums: IntArray): Int {
+    var k = 1
+    var j = 1
+
+    var lastSeen = nums[0]
+    for (i in 1..nums.lastIndex) {
+        val num = nums[i]
+        if (num == lastSeen) {
+            // same number
+
+        } else {
+            // new number
+            nums[j] = num
+            j++
+            lastSeen = num
+            k++
+        }
+    }
+
+    return k
 }
 
 fun swap(nums: IntArray, to: Int, from: Int) {

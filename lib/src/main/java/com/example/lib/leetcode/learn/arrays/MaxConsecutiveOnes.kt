@@ -1,6 +1,5 @@
 package com.example.lib.leetcode.learn.arrays
 
-import sun.jvm.hotspot.oops.CellTypeState.value
 import kotlin.math.max
 
 /*
@@ -81,6 +80,6 @@ class MaxConsecutiveOnes {
 fun main() {
     val m = MaxConsecutiveOnes()
     val a = intArrayOf()
-    val max = m.findMaxConsecutiveOnes(a)
-    println("max consecutive : $max")
+//    val max = m.findMaxConsecutiveOnes(a)
+//    println("max consecutive : $max")
 }
