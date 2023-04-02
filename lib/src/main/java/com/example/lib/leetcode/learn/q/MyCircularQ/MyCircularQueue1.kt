@@ -1,6 +1,4 @@
-package com.example.lib.leetcode.learn.q
-
-import java.awt.ItemSelectable
+package com.example.lib.leetcode.learn.q.MyCircularQ
 
 //https://leetcode.com/explore/learn/card/queue-stack/228/first-in-first-out-data-structure/1337/
 /*
@@ -8,7 +6,7 @@ import java.awt.ItemSelectable
 * 0 1 2 3 4 5
 
 * */
-class MyCircularQueue(val k: Int) {
+class MyCircularQueue1(val k: Int) {
 
     val q = IntArray(k)
     var h = -1
