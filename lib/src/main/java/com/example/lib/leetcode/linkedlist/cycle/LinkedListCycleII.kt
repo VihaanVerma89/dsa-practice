@@ -1,6 +1,6 @@
 package com.example.lib.leetcode.linkedlist.cycle
 
-import com.example.lib.leetcode.MovingAverage1.linkedlist.ListNode
+import com.example.lib.leetcode.linkedlist.ListNode
 
 class LinkedListCycleII {
 
