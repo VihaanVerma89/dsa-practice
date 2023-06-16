@@ -43,8 +43,73 @@ class PalindromeLinkedList {
     }
 
     fun isPalindromeInPlace(head: ListNode?): Boolean {
-        var r = false
+        var result = false
 
-        return r
+        if (head == null) {
+            // no elements
+        } else if (head?.next == null) {
+            // only one element
+            result=true
+        } else {
+            // more than 2 elements
+            var fastNode = head
+
+            var prev: ListNode? = null
+            var curr: ListNode? = head
+            var next: ListNode? = null
+
+            while (fastNode != null && fastNode?.next != null) {
+                fastNode = fastNode?.next?.next
+                next = curr?.next
+                curr?.next = prev
+                prev = curr
+                curr = next
+            }
+
+            // here when either fn is null or fn->next is null
+            var l: ListNode? = null
+            var r: ListNode? = null
+            if (fastNode == null) {
+                // even
+                l = prev
+                r = curr
+            } else if (fastNode.next == null) {
+                // odd
+                l = prev
+                r = curr?.next
+            }
+
+            // assume its palindrome till its not
+            if (l != null && r != null) {
+                result = true
+            }
+
+            while (l != null && r != null) {
+                if (l.`val` == r.`val`) {
+                    l = l.next
+                    r = r.next
+                } else {
+                    result = false
+                    break
+                }
+            }
+
+        }
+        return result
     }
+}
+
+fun main() {
+    val instance = PalindromeLinkedList()
+    val list = ListNode(1).apply {
+        next = ListNode(2).apply {
+            next = ListNode(2).apply {
+                next = ListNode(1).apply {
+                    next = null
+                }
+            }
+        }
+    }
+    val result = instance.isPalindromeInPlace(list)
+    println("palindrome list : $result")
 }
