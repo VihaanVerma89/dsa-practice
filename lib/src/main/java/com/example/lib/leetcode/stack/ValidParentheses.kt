@@ -60,7 +60,7 @@ class ValidParentheses {
     }
 
 
-    fun isValid(s: String): Boolean {
+    fun isValid2(s: String): Boolean {
         var valid = true
 
         val stack = Stack<Char>()
@@ -106,6 +106,45 @@ class ValidParentheses {
             match = true
         }
         return match
+    }
+
+
+    fun isValid(s: String): Boolean {
+        var result = true
+        if (s.length < 2) {
+            return false
+        }
+        val stack = Stack<Char>()
+        for (c in s) {
+            if (c == '[' || c == '(' || c == '{') {
+                // opening start
+                stack.push(c)
+            } else if (c == ']' || c == ')' || c == '}') {
+                // closing found check stack for matching opening
+                if (stack.isEmpty()) {
+                    return false
+                } else {
+                    // stack is not empty
+                    // does stack have matching opening chars
+                    val top = stack.pop()
+                    if (top == '[' && c == ']') {
+
+                    } else if (top == '(' && c == ')') {
+
+                    } else if (top == '{' && c == '}') {
+
+                    } else {
+                        // didnt find matching opening and close
+                        return false
+                    }
+                }
+            }
+        }
+
+        if (!stack.isEmpty()) {
+            result = false
+        }
+        return result
     }
 
 
