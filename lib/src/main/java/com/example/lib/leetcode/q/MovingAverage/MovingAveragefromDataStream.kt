@@ -13,8 +13,9 @@ class MovingAverage(val size: Int) {
     *         5 6 7
     * */
     val q: Queue<Int> = LinkedList<Int>()
+    var sum = 0
     var offerCount = 0
-    fun next(`val`: Int): Double {
+    fun next1(`val`: Int): Double {
         offerCount++
         if (q.size == size) {
             // q is full
@@ -35,5 +36,31 @@ class MovingAverage(val size: Int) {
         val avg = sum / d
         return avg
     }
+
+    fun next(`val`: Int): Double {
+
+        // sum of elements / number of elements
+        var avg: Double = 0.0
+
+        if (q.size < size) {
+            q.offer(`val`)
+            sum += `val`
+            avg = sum.toDouble() / q.size
+        } else if (q.size == size) {
+            val poll = q.poll()
+            sum -= poll
+            q.offer(`val`)
+            sum += `val`
+            avg = sum.toDouble() / q.size
+        } else if (q.size > 3) {
+            println("we shouldnt reach here")
+        }
+
+        return avg
+    }
+
+}
+
+fun main() {
 
 }
