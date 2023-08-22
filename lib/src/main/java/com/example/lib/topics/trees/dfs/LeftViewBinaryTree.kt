@@ -1,4 +1,4 @@
-package com.example.lib.topics.trees
+package com.example.lib.topics.trees.dfs
 
 import com.example.lib.geeksforgeeks.binaryTree.BinaryTree
 import com.example.lib.geeksforgeeks.binaryTree.Node

@@ -1,4 +1,4 @@
-package com.example.lib.topics.trees
+package com.example.lib.topics.trees.dfs
 
 import java.util.*
 
