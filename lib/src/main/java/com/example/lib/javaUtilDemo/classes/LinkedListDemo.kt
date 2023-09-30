@@ -3,7 +3,7 @@ package com.example.lib.javaUtilDemo.classes
 import java.util.*
 
 
-fun main() {
+fun reverse(){
     val ll = LinkedList<Int>()
     ll.add(1)
     ll.add(2)
@@ -20,7 +20,27 @@ fun main() {
     val joinToString = ll.joinToString(",", "[", "]")
     println(joinToString)
 
-
     val first = ll.first
+}
+
+
+fun deQueueDemo(){
+
+    val ll = LinkedList<Int>()
+
+
+    ll.addFirst(0)
+    ll.addLast(2)
+    ll.addFirst(1)
+    ll.addLast(4)
+    ll.addFirst(3)
+    // 3 1 0 2 4
+
+    println("ll : $ll")
+
+}
+fun main() {
+
+    deQueueDemo()
 }
 
