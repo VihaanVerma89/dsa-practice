@@ -1,4 +1,4 @@
-package com.example.lib.topics.trees.dfs
+package com.example.lib.topics.trees.binarySearchTrees
 
 import com.example.lib.leetcode.trees.TreeNode
 
