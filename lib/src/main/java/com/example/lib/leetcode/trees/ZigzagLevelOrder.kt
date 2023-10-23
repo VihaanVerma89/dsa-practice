@@ -55,21 +55,21 @@ class zigzagLevelOrder {
         return r
     }
 
-    fun zigzagLevelOrder(root: TreeNode?): List<List<Int>> {
-
-        val r = arrayListOf<ArrayList<Int>>()
-
-        // traversal - bfs
-        val q = LinkedList<TreeNode>()
-
-        // level 0,2,4
-        // l - > r
-
-        // levels 1,3,5
-        // r -> l
-
-        return r
-    }
+//    fun zigzagLevelOrder(root: TreeNode?): List<List<Int>> {
+//
+//        val r = arrayListOf<ArrayList<Int>>()
+//
+//        // traversal - bfs
+//        val q = LinkedList<TreeNode>()
+//
+//        // level 0,2,4
+//        // l - > r
+//
+//        // levels 1,3,5
+//        // r -> l
+//
+//        return r
+//    }
 
 //    solution from https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/editorial/
     fun zigzagLevelOrder(root: TreeNode?): List<List<Int?>?>? {
@@ -84,7 +84,7 @@ class zigzagLevelOrder {
         nodesDeque.addLast(null)
         var levelDeQue = LinkedList<Int?>()
         var l2r = true
-        while (nodesDeque.size() > 0) {
+        while (nodesDeque.size > 0) {
             val currNode = nodesDeque.pollFirst()
             if (currNode != null) {
                 if (l2r) levelDeQue.addLast(currNode.`val`) else levelDeQue.addFirst(
@@ -97,7 +97,7 @@ class zigzagLevelOrder {
                 results.add(levelDeQue)
                 levelDeQue = LinkedList()
                 // prepare for the next level
-                if (nodesDeque.size() > 0) nodesDeque.addLast(null)
+                if (nodesDeque.size > 0) nodesDeque.addLast(null)
                 l2r = !l2r
             }
         }
