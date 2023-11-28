@@ -38,8 +38,10 @@ class findSmallestSetOfVertices {
         for (i in 0 until n) {
             if (visited.contains(i)) {
             } else {
-                dfs(i, hmap)
-                result.add(i)
+                if (hmap.contains(i)) {
+                    dfs(i, hmap)
+                    result.add(i)
+                }
             }
         }
 
