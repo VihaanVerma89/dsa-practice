@@ -7,7 +7,7 @@ fun generateParenthesis(n: Int): List<String> {
     return ans
 }
 
-fun backtrack(ans: ArrayList<String>, cur: String, open: Int, close: Int, max: Int) {
+fun backtrack(ans: HashMap<Int, List<String>>, cur: String, open: Char, close: ArrayList<String>, max: ArrayList<String>) {
     val joinToString = ans.joinToString(",")
 
     println("before len check")
