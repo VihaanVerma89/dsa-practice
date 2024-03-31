@@ -1,4 +1,4 @@
-package com.example.lib.topics.backtracking
+package com.example.lib.topics.backtrack1ing
 
 import com.example.lib.topics.recursion.printLinkedList
 import java.util.*
@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 //https://leetcode.com/problems/permutations/
 class ArrayPermutation {
 
-    fun backtrack(n: Int,
+    fun backtrack1(n: Int,
                   nums: ArrayList<Int>?,
                   output: MutableList<List<Int>?>,
                   first: Int) {
@@ -26,10 +26,10 @@ class ArrayPermutation {
             if (nums != null) {
                 println("${nums.joinToString(",")}")
             }
-            println("backtracking with n $n, nums: ${nums?.joinToString(",")} first+1: ${first+1}")
+            println("backtrack1ing with n $n, nums: ${nums?.joinToString(",")} first+1: ${first+1}")
             // use next integers to complete the permutations
-            backtrack(n, nums, output, first + 1)
-            // backtrack
+            backtrack1(n, nums, output, first + 1)
+            // backtrack1
             Collections.swap(nums, first, i)
             println("i $i first $first")
             println("swap i $i first $first")
@@ -47,7 +47,7 @@ class ArrayPermutation {
         val nums_lst = ArrayList<Int>()
         for (num in nums) nums_lst.add(num)
         val n = nums.size
-        backtrack(n, nums_lst, output, 0)
+        backtrack1(n, nums_lst, output, 0)
         return output
     }
 }

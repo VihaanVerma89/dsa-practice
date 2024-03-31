@@ -1,4 +1,4 @@
-package com.example.lib.topics.backtracking
+package com.example.lib.topics.backtrack1ing
 
 
 fun allSubsets(pos: Int, len: Int, subset: Array<Int?>) {

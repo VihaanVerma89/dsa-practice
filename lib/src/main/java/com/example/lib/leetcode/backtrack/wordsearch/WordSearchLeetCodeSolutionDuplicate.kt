@@ -1,7 +1,5 @@
-package com.example.lib.leetcode.backtrack.wordsearch
+package com.example.lib.leetcode.backtrack1.wordsearch
 
-import com.sun.tools.javac.jvm.ByteCodes.ret
-import javax.lang.model.util.Elements.Origin
 
 // Runtime
 //496ms
@@ -22,7 +20,7 @@ class WordSearchLeetCodeSolutionDuplicate() {
             for (col in 0 until this.cols) {
 
 
-                val result = backtrack(row, col, word, 0)
+                val result = backtrack1(row, col, word, 0)
                 if (result) {
                     // match found
                     return true
@@ -33,7 +31,7 @@ class WordSearchLeetCodeSolutionDuplicate() {
         return false
     }
 
-    protected fun backtrack(
+    protected fun backtrack1(
         row: Int,
         col: Int,
         word: String,
@@ -67,13 +65,13 @@ class WordSearchLeetCodeSolutionDuplicate() {
         val orignalChar = board[row][col]
         board[row][col] = '#'
 
-        var result = backtrack(row - 1, col, word, index)
+        var result = backtrack1(row - 1, col, word, index)
         if (result) return true
-        result = backtrack(row + 1, col, word, index)
+        result = backtrack1(row + 1, col, word, index)
         if (result) return true
-        result = backtrack(row, col - 1, word, index)
+        result = backtrack1(row, col - 1, word, index)
         if (result) return true
-        result = backtrack(row, col + 1, word, index)
+        result = backtrack1(row, col + 1, word, index)
         if (result) return true
 
         // current cell is not in solution

@@ -1,8 +1,8 @@
-package com.example.lib.leetcode.backtrack
+package com.example.lib.leetcode.backtrack1
 
 class allPathsSourceTarget {
 
-    fun backtrack(
+    fun backtrack1(
         hmap: HashMap<Int, IntArray>,
         node: Int,
         tempList: ArrayList<Int>,
@@ -21,7 +21,7 @@ class allPathsSourceTarget {
         val connectionsList = hmap[node]
         for (connection in connectionsList!!) {
             tempList.add(node)
-            backtrack(hmap, connection, tempList, ansList)
+            backtrack1(hmap, connection, tempList, ansList)
             tempList.removeAt(tempList.size - 1)
         }
 
@@ -38,7 +38,7 @@ class allPathsSourceTarget {
 
         val ansList = arrayListOf<ArrayList<Int>>()
         val tempList = arrayListOf<Int>()
-        backtrack(hmap, 0, tempList, ansList)
+        backtrack1(hmap, 0, tempList, ansList)
         return ansList
     }
 

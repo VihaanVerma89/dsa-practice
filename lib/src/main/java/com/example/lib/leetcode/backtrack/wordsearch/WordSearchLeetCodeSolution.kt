@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.backtrack.wordsearch
+package com.example.lib.leetcode.backtrack1.wordsearch
 
 // Runtime
 //496ms
@@ -16,12 +16,12 @@ class WordSearchLeetCodeSolution() {
         this.COLS = board[0].size
         for (row in 0 until this.ROWS)
             for (col in 0 until this.COLS)
-                if (this.backtrack(row, col, word, 0))
+                if (this.backtrack1(row, col, word, 0))
                     return true
         return false
     }
 
-    protected fun backtrack(
+    protected fun backtrack1(
         row: kotlin.Int,
         col: kotlin.Int,
         word: kotlin.String,
@@ -43,7 +43,7 @@ class WordSearchLeetCodeSolution() {
         val rowOffsets = kotlin.intArrayOf(0, 1, 0, -1)
         val colOffsets = kotlin.intArrayOf(1, 0, -1, 0)
         for (d in 0..3) {
-            ret = this.backtrack(row + rowOffsets.get(d), col + colOffsets.get(d), word, index + 1)
+            ret = this.backtrack1(row + rowOffsets.get(d), col + colOffsets.get(d), word, index + 1)
             if (ret) break
         }
 

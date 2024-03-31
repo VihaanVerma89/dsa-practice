@@ -1,4 +1,4 @@
-package com.example.lib.topics.backtracking
+package com.example.lib.topics.backtrack1ing
 
 
 fun printSubSets(str: String, index: Int, depth: Int, subset: String) {

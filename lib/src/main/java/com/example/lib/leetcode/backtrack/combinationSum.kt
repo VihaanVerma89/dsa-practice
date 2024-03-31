@@ -1,10 +1,10 @@
-package com.example.lib.leetcode.backtrack
+package com.example.lib.leetcode.backtrack1
 
 
 class combinationSum {
 
 
-    fun backtrack(
+    fun backtrack1(
         candidates: IntArray,
         target: Int,
         start: Int,
@@ -24,7 +24,7 @@ class combinationSum {
         // traversal
         for (i in start until candidates.size) {
             tempList.add(candidates[i])
-            backtrack(candidates, target, i , sum + candidates[i], tempList, ansList)
+            backtrack1(candidates, target, i , sum + candidates[i], tempList, ansList)
             tempList.removeAt(tempList.size - 1)
         }
 
@@ -34,7 +34,7 @@ class combinationSum {
     fun combinationSum(candidates: IntArray, target: Int): List<List<Int>> {
         val tempList = arrayListOf<Int>()
         val ansList = arrayListOf<ArrayList<Int>>()
-        backtrack(candidates, target, 0, 0, tempList, ansList)
+        backtrack1(candidates, target, 0, 0, tempList, ansList)
         return ansList
     }
 

@@ -1,13 +1,13 @@
-//package com.example.lib.topics.backtracking
-//
-//
+package com.example.lib.leetcode.backtrack1
+
+
 //fun generateParenthesis(n: Int): List<String> {
 //    val ans = ArrayList<String>()
-//    backtrack(ans, "", 0, 0, n)
+//    backtrack1(ans, "", 0, 0, n)
 //    return ans
 //}
-//
-//fun backtrack(ans: HashMap<Int, List<String>>, cur: String, open: Char, close: ArrayList<String>, max: ArrayList<String>) {
+
+//fun backtrack1(ans: ArrayList<String>, cur: String, open: Char, close: ArrayList<String>, max: ArrayList<String>) {
 //    val joinToString = ans.joinToString(",")
 //
 //    println("before len check")
@@ -24,22 +24,31 @@
 //
 //    if (open < max) {
 //        println("input open: $cur")
-//        backtrack(ans, "$cur(", open + 1, close, max);
+//        backtrack1(ans, "$cur(", open + 1, close, max);
 //    }
 //    println("before close check")
 //    println("\ncur: $cur, open: $open, close: $close, max: $max")
 //    if (close < open) {
 //
 //        println("input close: $cur")
-//        backtrack(ans, "$cur)", open, close + 1, max);
+//        backtrack1(ans, "$cur)", open, close + 1, max);
 //    }
 //}
+
+// 12th jan 2024
+//fun generateParenthesis(n: Int): List<String> {
 //
-//fun main() {
+//}
 //
 //
-//    val n = 3
+//fun backtrack1(i: Int, n: Int, tempList: ArrayList<Char>, ansList: ArrayList<String>) {
+//
+//}
+
+fun main() {
+    val n = 3
 //    val generateParenthesis = generateParenthesis(3)
 //    val joinToString = generateParenthesis.joinToString(",")
 //    println(joinToString)
-//}
+}
+

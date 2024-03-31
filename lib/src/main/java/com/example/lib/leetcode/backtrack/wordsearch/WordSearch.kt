@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.backtrack.wordsearch
+package com.example.lib.leetcode.backtrack1.wordsearch
 
 
 // Runtime - 2943ms
@@ -6,7 +6,7 @@ package com.example.lib.leetcode.backtrack.wordsearch
 class WordSearch {
 
 
-    fun backtrack(
+    fun backtrack1(
         board: Array<CharArray>,
         word: String,
         row: Int,
@@ -55,19 +55,19 @@ class WordSearch {
 
                 // go left if prev was not right
                 if (prevDirection != 'r') {
-                    backtrack(board, word, row, left, nextPosition, nextChar, 'l')
+                    backtrack1(board, word, row, left, nextPosition, nextChar, 'l')
                 }
                 // go right
                 if (prevDirection != 'l') {
-                    backtrack(board, word, row, right, nextPosition, nextChar, 'r')
+                    backtrack1(board, word, row, right, nextPosition, nextChar, 'r')
                 }
                 // go up
                 if (prevDirection != 'd') {
-                    backtrack(board, word, up, col, nextPosition, nextChar, 'u')
+                    backtrack1(board, word, up, col, nextPosition, nextChar, 'u')
                 }
                 // go down
                 if (prevDirection != 'u') {
-                    backtrack(board, word, down, col, nextPosition, nextChar, 'd')
+                    backtrack1(board, word, down, col, nextPosition, nextChar, 'd')
                 }
             } else {
                 // invalid word index
@@ -90,7 +90,7 @@ class WordSearch {
                 for (col in 0 until board[0].size) {
                     val charValue = board[row][col]
                     if (charValue == startingChar) {
-                        backtrack(board, word, row, col, 0, charValue, 'n')
+                        backtrack1(board, word, row, col, 0, charValue, 'n')
                         if (result)
                             return true
                     } else {

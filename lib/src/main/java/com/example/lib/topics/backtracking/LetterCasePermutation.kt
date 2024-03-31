@@ -1,4 +1,4 @@
-package com.example.lib.topics.backtracking
+package com.example.lib.topics.backtrack1ing
 
 //https://leetcode.com/problems/letter-case-permutation/solution/
 class LetterCasePermutation {

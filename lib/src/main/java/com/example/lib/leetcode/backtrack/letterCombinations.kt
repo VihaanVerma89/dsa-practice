@@ -1,8 +1,8 @@
-package com.example.lib.leetcode.backtrack
+package com.example.lib.leetcode.backtrack1
 
 class letterCombinations {
 
-    fun backtrack(
+    fun backtrack1(
         hmap: HashMap<Int, List<String>>,
         digits: String,
         digit: Char?,
@@ -25,7 +25,7 @@ class letterCombinations {
                 // a
                 tempList.add(charIv.value)
                 val nextDigit = digits.getOrNull(position + 1)
-                backtrack(hmap, digits, nextDigit, position + 1, tempList, ansList)
+                backtrack1(hmap, digits, nextDigit, position + 1, tempList, ansList)
                 tempList.removeLast()
             }
         }
@@ -52,7 +52,7 @@ class letterCombinations {
         val tempList = arrayListOf<String>()
         val ansList = arrayListOf<String>()
 
-        backtrack(hmap, digits, digits[0], 0, tempList, ansList)
+        backtrack1(hmap, digits, digits[0], 0, tempList, ansList)
         return ansList
     }
 
