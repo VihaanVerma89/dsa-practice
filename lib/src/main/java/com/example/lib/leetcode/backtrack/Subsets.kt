@@ -37,14 +37,51 @@ class Subsets {
 //    }
 
 
+    // 2nd time
+//    fun subsets(nums: IntArray): List<List<Int>> {
+//        val ansList = arrayListOf<ArrayList<Int>>()
+//        val tempList = arrayListOf<Int>()
+//        backtrack1(nums, 0, tempList, ansList)
+//        return ansList
+//    }
+//
+//    fun backtrack1(
+//        nums: IntArray,
+//        index: Int,
+//        tempList: ArrayList<Int>,
+//        ansList: ArrayList<ArrayList<Int>>
+//    ) {
+//
+//        // base condition
+//        if (tempList.size == nums.size) {
+//            ansList.add(ArrayList(tempList))
+//            return
+//        }
+//
+//        ansList.add(ArrayList(tempList))
+//
+//        // logic
+//        for (i in index until nums.size) {
+//            if (tempList.contains(nums[i]).not()) {
+//                tempList.add(nums[i]) // down
+//                backtrack1(nums, i + 1, tempList, ansList)
+//                tempList.remove(nums[i])
+//            } else {
+//                // duplicate
+//            }
+//        }
+//
+//    }
+
+
     fun subsets(nums: IntArray): List<List<Int>> {
         val ansList = arrayListOf<ArrayList<Int>>()
         val tempList = arrayListOf<Int>()
-        backtrack1(nums, 0, tempList, ansList)
+        btrack(nums, 0, tempList, ansList)
         return ansList
     }
 
-    fun backtrack1(
+    fun btrack(
         nums: IntArray,
         index: Int,
         tempList: ArrayList<Int>,
@@ -52,27 +89,21 @@ class Subsets {
     ) {
 
         // base condition
-        if (tempList.size == nums.size) {
-            ansList.add(ArrayList(tempList))
+        if (index > nums.size) {
             return
         }
 
         ansList.add(ArrayList(tempList))
 
-        // logic
+        // traversal
         for (i in index until nums.size) {
-            if (tempList.contains(nums[i]).not()) {
-                tempList.add(nums[i]) // down
-                backtrack1(nums, i + 1, tempList, ansList)
-                tempList.remove(nums[i])
-            } else {
-                // duplicate
-            }
+            val value = nums[i]
+            tempList.add(value)
+            btrack(nums, i + 1, tempList, ansList)
+            tempList.removeLast()
         }
 
     }
-
-
 }
 
 fun main() {
