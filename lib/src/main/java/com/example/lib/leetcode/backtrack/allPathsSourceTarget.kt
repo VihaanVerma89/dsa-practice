@@ -27,7 +27,7 @@ class allPathsSourceTarget {
 
     }
 
-    fun allPathsSourceTarget(graph: Array<IntArray>): List<List<Int>> {
+    fun allPathsSourceTarget1(graph: Array<IntArray>): List<List<Int>> {
 
         val hmap = hashMapOf<Int, IntArray>()
 
@@ -41,6 +41,47 @@ class allPathsSourceTarget {
         backtrack1(hmap, 0, tempList, ansList)
         return ansList
     }
+
+
+    fun btrack(
+        graph: Array<IntArray>,
+        node: Int,
+        tempList: ArrayList<Int>,
+        ansList: ArrayList<ArrayList<Int>>
+    ) {
+
+        // base condition
+        if (node == graph.size - 1) {
+            // destination node found
+            ansList.add(ArrayList(tempList).apply {
+                add(node)
+            })
+            return
+        }
+
+        val connectedNodes = graph[node]
+        if (connectedNodes != null) {
+            for (connectedNode in connectedNodes) {
+                // forward
+                tempList.add(node)
+                btrack(graph, connectedNode, tempList, ansList)
+                // backward
+                tempList.removeAt(tempList.size - 1)
+            }
+        } else {
+            // no connected nodes
+//            tempList.add(node)
+        }
+
+    }
+
+    fun allPathsSourceTarget(graph: Array<IntArray>): List<List<Int>> {
+        val ansList = arrayListOf<ArrayList<Int>>()
+        val tempList = arrayListOf<Int>()
+        btrack(graph, 0, tempList, ansList)
+        return ansList
+    }
+
 
 }
 

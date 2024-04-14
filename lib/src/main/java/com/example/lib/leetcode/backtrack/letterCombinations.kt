@@ -32,7 +32,7 @@ class letterCombinations {
 
     }
 
-    fun letterCombinations(digits: String): List<String> {
+    fun letterCombinations1(digits: String): List<String> {
 
         if (digits.isNullOrEmpty()) {
             return listOf()
@@ -56,7 +56,65 @@ class letterCombinations {
         return ansList
     }
 
+
+    fun bTrack(
+        digits: String,
+        index: Int,
+        digitsArrayList: ArrayList<ArrayList<String>>,
+        stringBuffer: StringBuffer,
+        ansList: ArrayList<String>
+    ) {
+
+        // base condition
+        if (stringBuffer.length == digits.length) {
+            val ans = StringBuffer(stringBuffer).toString()
+            ansList.add(ans)
+            return
+        }
+
+
+        // traversal
+
+        val digit = digits.get(index).digitToInt()
+        val digitChars = digitsArrayList.get(digit)
+        for (digitChar in digitChars) {
+            // forward
+            stringBuffer.append(digitChar)
+            bTrack(digits, index + 1, digitsArrayList, stringBuffer, ansList)
+            // reverse
+            stringBuffer.deleteCharAt(stringBuffer.length - 1)
+        }
+    }
+
+
+    fun letterCombinations(digits: String): List<String> {
+
+        // sanity
+        if (digits.isNullOrEmpty()) {
+            return emptyList()
+        }
+
+
+        val digitsArrayList = arrayListOf<ArrayList<String>>(
+            arrayListOf<String>(),
+            arrayListOf<String>(),
+            arrayListOf<String>("a", "b", "c"),
+            arrayListOf<String>("d", "e", "f"),
+            arrayListOf<String>("g", "h", "i"),
+            arrayListOf<String>("j", "k", "l"),
+            arrayListOf<String>("m", "n", "o"),
+            arrayListOf<String>("p", "q", "r", "s"),
+            arrayListOf<String>("t", "u", "v"),
+            arrayListOf<String>("w", "x", "y", "z")
+        )
+
+        val ansList = arrayListOf<String>()
+        bTrack(digits, 0, digitsArrayList, StringBuffer(), ansList)
+        return ansList
+    }
+
 }
+
 
 fun main() {
     val result = letterCombinations().letterCombinations("23")
