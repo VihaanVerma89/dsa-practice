@@ -4,6 +4,7 @@ package com.example.lib.geeksforgeeks.heap;
  * Created by vihaanverma on 06/12/17.
  */
 
+// Heap Array implementation
 public class Heap {
 
     int array[];

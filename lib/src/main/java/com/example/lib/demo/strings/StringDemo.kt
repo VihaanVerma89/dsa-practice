@@ -1,4 +1,4 @@
-package com.example.lib.kotlinsDemo.strings
+package com.example.lib.demo.strings
 
 class StringDemo {
 

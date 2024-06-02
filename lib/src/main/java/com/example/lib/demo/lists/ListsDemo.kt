@@ -1,4 +1,4 @@
-package com.example.lib.kotlinsDemo.lists
+package com.example.lib.demo.lists
 
 class ListsDemo {
 

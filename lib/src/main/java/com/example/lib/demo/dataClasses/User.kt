@@ -1,4 +1,4 @@
-package com.example.lib.kotlinsDemo.dataClasses
+package com.example.lib.demo.dataClasses
 
 data class User(val name: String, val age: Int) {
 

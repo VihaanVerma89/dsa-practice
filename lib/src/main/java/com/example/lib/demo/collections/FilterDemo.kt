@@ -1,4 +1,4 @@
-package com.example.lib.kotlinsDemo.collections
+package com.example.lib.demo.collections
 
 
 fun filterList() {
