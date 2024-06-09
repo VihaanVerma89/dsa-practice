@@ -1,51 +1,42 @@
 package com.example.lib.leetcode.heaps
 
 import java.util.PriorityQueue
-import kotlin.math.min
 
 class topKFrequent {
 
-    class HeapNode(var freq: Int, var num: Int)
+
+    class HeapNode(val number: Int, var frequency: Int)
 
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
 
+        val numMap = HashMap<Int, Int>()
         val result = IntArray(k)
 
-        // create freq priority
-        val minHeap = PriorityQueue<HeapNode>()
-
-        // add elements into heap and remove the ones which are not top k
         for (num in nums) {
-
-            if (minHeap.size == 0) {
-                val entry = HeapNode(1, num)
-                minHeap.add(entry)
+            if (numMap.contains(num)) {
+                numMap.put(num, numMap[num]!! + 1)
             } else {
-                // heap has values
-
-                // check and update the freq
-                var matchFound = false
-                for (heapNode in minHeap) {
-                    if (heapNode.num == num) {
-                        heapNode.freq++
-                        matchFound = true
-                    }
-                }
-
-                if (!matchFound) {
-                    // new element with 1 freq
-                    if (minHeap.size < k) {
-                        minHeap.add((HeapNode(1, num)))
-                    } else {
-
-                    }
-                    val minNode = minHeap.peek()
-
-                }
-
+                numMap[num] = 1
             }
         }
 
+        // num -> freq ready
+
+        val pq =
+            PriorityQueue(Comparator<HeapNode> { p0, p1 -> p0?.frequency?.minus(p1?.frequency!!)!! })
+
+        for (entry in numMap) {
+            pq.add(HeapNode(entry.key, entry.value))
+        }
+
+        while (pq.size != k) {
+            pq.remove()
+        }
+
+        var i = 0
+        while (pq.isNotEmpty()) {
+            pq.remove().also { result[i++] = it.number }
+        }
         return result
     }
 
