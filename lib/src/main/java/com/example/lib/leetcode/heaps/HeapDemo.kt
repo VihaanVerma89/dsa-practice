@@ -26,12 +26,33 @@ class HeapDemo {
         println("maxHeap peek() : ${maxHeap.peek()}")
         println("maxHeap remove(): ${maxHeap.remove()}")
         println("maxHeap size(): ${maxHeap.size}")
+    }
+
+    data class Person(val name: String, val age: Int)
+
+    val ascendingAgeCompator = Comparator<Person>{ p1, p2 -> p1.age - p2.age}
+//    val descendingAgeComparator = Comparator<Person> { p1, p2 -> p1.age.compareTo(p2.age) }.reversed()
+    val descendingAgeComparator = Comparator<Person> { p1, p2 -> p1.age - p2.age }.reversed()
+    fun descendingCompatorTest(){
+
+        val people = listOf(
+            Person("Alice", 30),
+            Person("Bob", 25),
+            Person("Charlie", 35)
+        )
 
 
+        val ascSortedPeople = people.sortedWith(ascendingAgeCompator)
+        println("asc order : $ascSortedPeople")
+
+        val descSortedPeople = people.sortedWith(descendingAgeComparator)
+        println("desc order : $descSortedPeople")
     }
 }
 
 fun main() {
 //    HeapDemo().minHeapTest()
-    HeapDemo().maxHeapTest()
+//    HeapDemo().maxHeapTest()
+
+    HeapDemo().descendingCompatorTest()
 }

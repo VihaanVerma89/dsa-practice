@@ -1,13 +1,10 @@
-package com.example.lib.leetcode.heaps
+package com.example.lib.leetcode.heaps.findclosestElements
 
-import com.example.lib.geeksforgeeks.binaryTree.Node
-import com.sun.org.apache.xerces.internal.dom.NodeImpl
-import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.Comparator
 import kotlin.math.absoluteValue
 
-class findClosestElements {
+class FindClosestElementsPoorRuntime {
 
     class NodeDiff(val value: Int, val diff: Int)
 
