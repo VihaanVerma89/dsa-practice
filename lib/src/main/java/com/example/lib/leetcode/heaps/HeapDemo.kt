@@ -30,23 +30,50 @@ class HeapDemo {
 
     data class Person(val name: String, val age: Int)
 
-    val ascendingAgeCompator = Comparator<Person>{ p1, p2 -> p1.age - p2.age}
-//    val descendingAgeComparator = Comparator<Person> { p1, p2 -> p1.age.compareTo(p2.age) }.reversed()
-    val descendingAgeComparator = Comparator<Person> { p1, p2 -> p1.age - p2.age }.reversed()
-    fun descendingCompatorTest(){
+    val aComp = Comparator<Person> { p1, p2 -> p1.age - p2.age }
 
-        val people = listOf(
-            Person("Alice", 30),
-            Person("Bob", 25),
-            Person("Charlie", 35)
-        )
+    val dComp = Comparator<Person> { p1, p2 -> p2.age - p1.age }
+    val people = listOf(
+        Person("Alice", 1),
+        Person("Alice", 2),
+        Person("Alice", 3),
+        Person("Alice", 4),
+        Person("Alice", 5),
+        Person("Bob", 6),
+        Person("Charlie", 7)
+    )
 
+    fun descendingCompatorTest() {
 
-        val ascSortedPeople = people.sortedWith(ascendingAgeCompator)
-        println("asc order : $ascSortedPeople")
+        val pq = PriorityQueue<Person>(dComp)
+        for (i in people) {
+            pq.add(i)
+            if (pq.size > k) {
+                pq.remove()
+            }
+        }
 
-        val descSortedPeople = people.sortedWith(descendingAgeComparator)
-        println("desc order : $descSortedPeople")
+        while (pq.isNotEmpty()) {
+            println("top -> ${pq.poll()}")
+        }
+    }
+
+    val k = 3
+    fun ascendingComparatorTest() {
+
+        val pq = PriorityQueue<Person>(aComp)
+
+        for (i in people) {
+            pq.add(i)
+            if (pq.size > k) {
+                pq.remove()
+            }
+        }
+
+        while (pq.isNotEmpty()) {
+            println("top -> ${pq.remove()}")
+        }
+
     }
 }
 
@@ -54,5 +81,10 @@ fun main() {
 //    HeapDemo().minHeapTest()
 //    HeapDemo().maxHeapTest()
 
+    println("asc comparator test")
+    HeapDemo().ascendingComparatorTest()
+
+    println("desc comparator test")
     HeapDemo().descendingCompatorTest()
+
 }
