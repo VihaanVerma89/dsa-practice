@@ -1,11 +1,9 @@
 package com.example.lib.leetcode.arrays
 
 class reverseString {
-    fun reverseString(s: CharArray): Unit {
-
+    fun reverseString1(s: CharArray): Unit {
         var i = 0
         var j = s.lastIndex
-
         while (i != j || i > j) {
             val t = s[i]
             s[i] = s[j]
@@ -13,6 +11,19 @@ class reverseString {
             i++
             j--
         }
+    }
 
+    fun reverseString(s: CharArray) {
+        var i = 0
+        var j = s.size - 1
+        var temp: Char = ' '
+
+        while (i < j) {
+            temp = s[i]
+            s[i] = s[j]
+            s[j] = temp
+            i++
+            j--
+        }
     }
 }
