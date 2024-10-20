@@ -3,7 +3,11 @@ package com.example.lib.topics.arrays
 class SubarraySumEqualsK {
 
 
-    fun subarraySumWithSumArray(nums: IntArray, k: Int): Int {
+    fun subarraySum(nums: IntArray, k: Int): Int{
+
+    }
+
+    fun subarraySumWithSumArray4(nums: IntArray, k: Int): Int {
         var count = 0
 
         val sumArray = IntArray(nums.size)
@@ -26,8 +30,6 @@ class SubarraySumEqualsK {
 
         return count
     }
-
-
     fun subarraySumHashMap(nums: IntArray, k: Int): Int {
         var count = 0
         var sum = 0
@@ -46,7 +48,6 @@ class SubarraySumEqualsK {
         }
         return count
     }
-
     fun subarraySum3Loops(nums: IntArray, k: Int): Int {
         var count = 0
 
@@ -66,7 +67,6 @@ class SubarraySumEqualsK {
 
         return count
     }
-
     fun subarraySum2(nums: IntArray, k: Int): Int {
 
         var count = 0
@@ -96,7 +96,6 @@ class SubarraySumEqualsK {
         }
         return count
     }
-
     fun subarraySum1(nums: IntArray, k: Int): Int {
         var count = 0
         if (nums.size >= 2) {
