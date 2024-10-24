@@ -3,7 +3,35 @@ package com.example.lib.leetcode.arrays.slidingwindow
 // https://leetcode.com/problems/subarray-product-less-than-k/
 class numSubarrayProductLessThanK {
 
+
     fun numSubarrayProductLessThanK(nums: IntArray, k: Int): Int {
+
+        // strictly less than k
+        // if k is zero then ans is 0
+        if (k < 1) {
+            return 0
+        }
+        var s = 0
+        var ans = 0
+        var product = 1
+
+        for (e in 0 until nums.size) {
+
+            product *= nums[e]
+
+            while (product >= k && s < nums.size) {
+                product /= nums[s]
+                s++
+            }
+
+            // product is <k
+            ans += e - s + 1
+        }
+
+        return ans
+    }
+
+    fun numSubarrayProductLessThanK2(nums: IntArray, k: Int): Int {
 
         var s = 0
         var e = 0
@@ -32,6 +60,7 @@ class numSubarrayProductLessThanK {
 
 
     // reading this code looks like it will work but doesn't
+    // I didn't understand the concept of e-s+1 to get number of subarrays
     fun numSubarrayProductLessThanK1(nums: IntArray, k: Int): Int {
 
         var l = 0

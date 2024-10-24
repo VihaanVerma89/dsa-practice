@@ -4,7 +4,33 @@ package com.example.lib.leetcode.arrays.slidingwindow
 class flip0 {
 
 
-    fun findLen(s: String): Int {
+    fun findLen(s: String) {
+
+        var l = 0
+        var r = 0
+        var ans = 0
+        var zeroCount = 0
+        var firstZeroIndex = 0
+        for (r in 0 until s.length) {
+
+            if (s[r] == '0') {
+                if (zeroCount == 0) {
+                    // first zero found
+                    firstZeroIndex = r
+                    zeroCount++
+                } else if (zeroCount == 1) {
+                    // second zero found
+                    l = firstZeroIndex
+                    zeroCount = 0
+                }
+            }
+
+            ans = maxOf(ans, r - l + 1)
+        }
+    }
+
+
+    fun findLen1(s: String): Int {
 
         var l = 0
         var r = 0
