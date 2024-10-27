@@ -5,6 +5,7 @@ class SubarraySumEqualsK {
 
     fun subarraySum(nums: IntArray, k: Int): Int{
 
+        return 0
     }
 
     fun subarraySumWithSumArray4(nums: IntArray, k: Int): Int {

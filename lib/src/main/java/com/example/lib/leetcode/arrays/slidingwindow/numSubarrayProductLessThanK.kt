@@ -56,6 +56,7 @@ class numSubarrayProductLessThanK {
             }
 
         }
+        return ans
     }
 
 

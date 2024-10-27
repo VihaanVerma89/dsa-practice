@@ -59,7 +59,6 @@ class ValidParentheses {
         return char == ')' || char == '}' || char == ']'
     }
 
-
     fun isValid2(s: String): Boolean {
         var valid = true
 
@@ -108,8 +107,7 @@ class ValidParentheses {
         return match
     }
 
-
-    fun isValid(s: String): Boolean {
+    fun isValid3(s: String): Boolean {
         var result = true
         if (s.length < 2) {
             return false
@@ -147,6 +145,12 @@ class ValidParentheses {
         return result
     }
 
+    fun isValid(s: String): Boolean {
+
+        val stack = Stack<Char>()
+
+        return false
+    }
 
 }
 
