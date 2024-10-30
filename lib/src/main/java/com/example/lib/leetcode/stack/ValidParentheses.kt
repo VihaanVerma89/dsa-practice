@@ -146,10 +146,34 @@ class ValidParentheses {
     }
 
     fun isValid(s: String): Boolean {
-
+        if (s.isEmpty()) {
+            return false
+        }
         val stack = Stack<Char>()
 
-        return false
+        for (c in s) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c)
+            } else if (c == ')' || c == '}' || c == ']') {
+                if (stack.isNotEmpty()) {
+                    val top = stack.peek()
+                    if (
+                        (top == '(' && c == ')') ||
+                        (top == '{' && c == '}') ||
+                        (top == '[' && c == ']')
+                    ) {
+                        stack.pop()
+                    } else {
+                        return false
+                    }
+                } else {
+                    // stack is empty and we have a closing char
+                    return false
+                }
+            }
+        }
+
+        return stack.size == 0
     }
 
 }
