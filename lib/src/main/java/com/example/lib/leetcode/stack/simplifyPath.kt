@@ -1,8 +1,62 @@
 package com.example.lib.leetcode.stack
 
-import java.util.*
+import java.util.Stack
+
 
 class simplifyPath {
+
+
+    /*
+    . -> current
+    ..  -> parent
+    //// -> /
+    ... or .... are valid
+
+    examples
+    /home/
+    /home//foo/
+    /home/foo
+    /home/users/Documents/../pictures
+    /../
+     */
+    fun simplifyPath(path: String): String {
+        var result = ""
+        if (!path.isNullOrBlank()) {
+            val stack = ArrayDeque<String>()
+            val directories = path.split("/")
+
+            for (directory in directories) {
+                if (directory == "..") {
+                    if (stack.isNotEmpty()) {
+                        stack.removeLast()
+                    } else {
+                        println("Stack is empty and we can't go up. This is invalid input")
+                    }
+                } else if (directory == ".") {
+                    println("current directory. Ignore in processing")
+                } else if (directory == "") {
+                    println("ignore blank")
+                } else {
+                    // valid directory in path
+                    stack.addLast(directory)
+                }
+            }
+
+            if (stack.isNotEmpty()) {
+                val sb = StringBuilder()
+                while (stack.isNotEmpty()) {
+                    sb.append("/")
+                    sb.append(stack.removeFirst())
+                }
+                result = sb.toString()
+            } else {
+                // stack is empty but had some commands ?
+                return "/"
+            }
+
+        }
+        return result
+    }
 
     /*
     Valid path
@@ -116,8 +170,6 @@ class simplifyPath {
 
         return result
     }
-
-
     fun simplifyPathAttempt2(path: String): String {
         var result = ""
 
@@ -169,16 +221,11 @@ class simplifyPath {
 
         return result
     }
-
-
     /*
-
-
         /users/vihaan/code/android/
-
         /../
      */
-    fun simplifyPath(path: String): String? {
+    fun simplifyPath3(path: String): String? {
 
         val dirs = path.split("/")
         val s = Stack<String>()
@@ -223,7 +270,8 @@ class simplifyPath {
 
 fun main() {
     val instance = simplifyPath()
-    val input = "/users/home/vihaan/code"
+//    val input = "/users/home/vihaan/code"
+    val input = "/home//foo/"
     val output = instance.simplifyPath(input)
     println("output $output")
 }

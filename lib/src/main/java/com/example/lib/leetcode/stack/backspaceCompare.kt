@@ -3,7 +3,52 @@ package com.example.lib.leetcode.stack
 import java.util.*
 
 class backspaceCompare {
+
     fun backspaceCompare(s: String, t: String): Boolean {
+        val stack1 = ArrayDeque<Char>()
+        val stack2 = ArrayDeque<Char>()
+
+        for (c in s) {
+            if (c == '#') {
+                if (stack1.isNotEmpty()) {
+                    stack1.pop()
+                } else {
+                    // stack 1 empty
+                }
+            } else {
+                stack1.push(c)
+            }
+        }
+
+        for (c in t) {
+            if (c == '#') {
+                if (stack2.isNotEmpty()) {
+                    stack2.pop()
+                } else {
+                    // stack 1 empty
+                }
+            } else {
+                stack2.push(c)
+            }
+        }
+
+        var result = false
+        if (stack1.size != stack2.size) {
+            result = false
+        } else {
+            while (stack1.isNotEmpty() && stack2.isNotEmpty()) {
+                val top1 = stack1.pop()
+                val top2 = stack2.pop()
+                if (top1 != top2) {
+                    return false
+                }
+            }
+            result = true
+        }
+        return result
+    }
+
+    fun backspaceCompare1(s: String, t: String): Boolean {
         var result = false
 
         val stack1 = Stack<Char>()
