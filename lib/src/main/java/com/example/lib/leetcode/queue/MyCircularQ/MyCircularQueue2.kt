@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.q.MyCircularQ
+package com.example.lib.leetcode.queue.MyCircularQ
 
 class MyCircularQueue2(k: Int) {
 

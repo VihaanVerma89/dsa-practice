@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.q
+package com.example.lib.leetcode.queue
 
 class OpenTheLock {
 

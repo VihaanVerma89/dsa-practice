@@ -1,13 +1,48 @@
 package com.example.lib.leetcode.stack
 
+import jdk.vm.ci.aarch64.AArch64.sp
 import java.lang.Character.isLowerCase
 import java.lang.Character.isUpperCase
 import java.util.*
 import javax.xml.stream.events.Characters
+import kotlin.collections.ArrayDeque
 
 class makeGood {
 
+
     fun makeGood(s: String): String {
+        if (s.isNullOrEmpty() || s.length == 1) {
+            return s
+        }
+
+        val dq = ArrayDeque<Char>()
+        for (c in s) {
+            if (dq.isNotEmpty() && isBadChar(c, dq.last())) {
+                dq.removeLast()
+            } else {
+                dq.addLast(c)
+            }
+        }
+        var sb = StringBuilder()
+        while (dq.isNotEmpty()) {
+            sb.append(dq.removeFirst())
+        }
+        return sb.toString()
+    }
+
+    fun isBadChar(c1: Char, c2: Char): Boolean {
+        var result = false
+        if (c1 == c2) {
+            // they are the same
+        } else if (c1.lowercaseChar() == c2 || c1.uppercaseChar() == c2) {
+            result = true
+        } else if (c1 == c2.lowercaseChar() || c1 == c2.uppercaseChar()) {
+            result = true
+        }
+        return result
+    }
+
+    fun makeGood1(s: String): String {
         val stack = Stack<Char>()
 
         for (c in s) {

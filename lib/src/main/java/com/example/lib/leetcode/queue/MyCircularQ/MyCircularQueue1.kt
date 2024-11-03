@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.q.MyCircularQ
+package com.example.lib.leetcode.queue.MyCircularQ
 
 //https://leetcode.com/explore/learn/card/queue-stack/228/first-in-first-out-data-structure/1337/
 /*
