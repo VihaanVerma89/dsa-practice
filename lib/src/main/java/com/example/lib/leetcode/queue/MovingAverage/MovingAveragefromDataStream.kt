@@ -5,6 +5,24 @@ import java.util.*
 //https://leetcode.com/explore/learn/card/queue-stack/228/first-in-first-out-data-structure/1368/
 class MovingAverage(val size: Int) {
 
+
+    val q: Queue<Int> = LinkedList<Int>()
+    var sum = 0
+
+    fun next(`val`: Int): Double {
+
+        q.add(`val`)
+        sum += `val`
+
+        if (q.size > size) {
+                sum -= q.poll()
+        } else {
+
+        }
+
+        return sum/q.size.toDouble()
+    }
+
     /*
     * 0 1 2
     *   1 2 3
@@ -12,8 +30,6 @@ class MovingAverage(val size: Int) {
     *       4 5 6
     *         5 6 7
     * */
-    val q: Queue<Int> = LinkedList<Int>()
-    var sum = 0
     var offerCount = 0
     fun next1(`val`: Int): Double {
         offerCount++
@@ -37,7 +53,7 @@ class MovingAverage(val size: Int) {
         return avg
     }
 
-    fun next(`val`: Int): Double {
+    fun next2(`val`: Int): Double {
 
         // sum of elements / number of elements
         var avg: Double = 0.0

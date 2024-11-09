@@ -3,8 +3,49 @@ package com.example.lib.leetcode.stack
 import java.util.*
 import kotlin.collections.HashMap
 
+fun main() {
+    val nums1 = intArrayOf(4, 1, 2)
+    val nums2 = intArrayOf(1, 3, 4, 2)
+
+    val result = nextGreaterElement().nextGreaterElement(nums1, nums2)
+    println(result.contentToString())
+}
+
 // https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/706/stacks-and-queues/4612/
 class nextGreaterElement {
+
+
+    /*
+    num1 is subset of nums2
+     */
+    fun nextGreaterElement(nums1: IntArray, nums2: IntArray): IntArray {
+
+        val result = IntArray(nums1.size) {
+            -1
+        }
+
+        // value -> Index
+        val hmap2 = HashMap<Int, Int>()
+
+        for (iv2 in nums2.withIndex()) {
+            hmap2.put(iv2.value, iv2.index)
+        }
+
+//        val stack = Stack<Int>()
+        for (iv1 in nums1.withIndex()) {
+            if (hmap2.contains(iv1.value)) {
+                val index2 = hmap2.get(iv1.value)
+                val value = nums2[index2!!]
+                for (j in index2 until nums2.size) {
+                    if (value < nums2[j]) {
+                        result[iv1.index] = nums2[j]
+                        break
+                    }
+                }
+            }
+        }
+        return result
+    }
 
     /*
 
@@ -80,7 +121,7 @@ class nextGreaterElement {
     }
 
 
-    fun nextGreaterElement(nums1: IntArray, nums2: IntArray): IntArray {
+    fun nextGreaterElements2(nums1: IntArray, nums2: IntArray): IntArray {
         val result = IntArray(nums1.size)
 
         val s = Stack<Int>()
@@ -125,6 +166,3 @@ class nextGreaterElement {
 
 }
 
-fun main() {
-
-}

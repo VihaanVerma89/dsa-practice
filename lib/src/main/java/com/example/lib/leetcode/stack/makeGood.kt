@@ -1,10 +1,6 @@
 package com.example.lib.leetcode.stack
 
-import jdk.vm.ci.aarch64.AArch64.sp
-import java.lang.Character.isLowerCase
-import java.lang.Character.isUpperCase
 import java.util.*
-import javax.xml.stream.events.Characters
 import kotlin.collections.ArrayDeque
 
 class makeGood {
