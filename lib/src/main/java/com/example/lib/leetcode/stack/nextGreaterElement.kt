@@ -104,12 +104,40 @@ class nextGreaterElement {
         return result
     }
 
-    fun nextGreaterElementEditorial(nums1: IntArray, nums2: IntArray): IntArray? {
+    fun nextGreaterElementEditorial(nums1: IntArray, nums2: IntArray): IntArray {
+
+        val stack = Stack<Int>()
+        val map = HashMap<Int, Int>()
+
+        for (iv in nums2.withIndex()) {
+
+            while (stack.isNotEmpty() && stack.peek() < iv.value) {
+                // we have the nge
+                map.put(stack.pop(), iv.value)
+            }
+
+            stack.push(iv.value)
+        }
+
+        while (stack.isNotEmpty()) {
+            map[stack.pop()] = -1
+        }
+
+        // we have a mapping for nge for nums2
+
+        val result = IntArray(nums1.size)
+        for (iv in nums1.withIndex()) {
+            result[iv.index] = map.get(iv.value) ?: -1
+        }
+
+        return result
+    }
+
+    fun nextGreaterElementEditorial1(nums1: IntArray, nums2: IntArray): IntArray? {
         val stack: Stack<Int> = Stack()
         val map: HashMap<Int, Int> = HashMap()
         for (i in nums2.indices) {
-            while (!stack.empty() && nums2[i] > stack.peek())
-                map[stack.pop()] = nums2[i]
+            while (!stack.empty() && nums2[i] > stack.peek()) map[stack.pop()] = nums2[i]
             stack.push(nums2[i])
         }
         while (!stack.empty()) map[stack.pop()] = -1
