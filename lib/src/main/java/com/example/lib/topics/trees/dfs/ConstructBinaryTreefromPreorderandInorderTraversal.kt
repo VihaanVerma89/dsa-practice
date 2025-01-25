@@ -1,6 +1,6 @@
 package com.example.lib.topics.trees.dfs
 
-import com.example.lib.leetcode.trees.TreeNode
+import com.example.lib.leetcode.binaryTrees.TreeNode
 
 
 class Solution {

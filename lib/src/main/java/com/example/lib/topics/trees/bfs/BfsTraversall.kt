@@ -1,6 +1,6 @@
 package com.example.lib.topics.trees.bfs
 
-import com.example.lib.leetcode.trees.TreeNode
+import com.example.lib.leetcode.binaryTrees.TreeNode
 import java.util.LinkedList
 import java.util.Queue
 

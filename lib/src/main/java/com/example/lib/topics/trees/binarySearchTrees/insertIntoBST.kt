@@ -1,7 +1,6 @@
 package com.example.lib.topics.trees.binarySearchTrees
 
-import com.example.lib.leetcode.trees.TreeNode
-import java.util.Currency
+import com.example.lib.leetcode.binaryTrees.TreeNode
 
 class insertIntoBST {
     fun insertIntoBST(root: TreeNode?, `val`: Int): TreeNode? {

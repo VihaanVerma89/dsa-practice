@@ -1,6 +1,8 @@
-package com.example.lib.leetcode.trees
+package com.example.lib.leetcode.binaryTrees
 
 class minDepth {
+
+    //
 
 
     fun minDepth(root: TreeNode?): Int {
