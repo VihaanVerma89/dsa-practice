@@ -3,38 +3,50 @@ package com.example.lib
 import com.example.lib.leetcode.binaryTrees.TreeNode
 
 class Solution{
-    
-    fun maxAncestorDiff(root:TreeNode?):Int{
+
+    fun diameterOfBinaryTree(root:TreeNode?):Int{
         
-        if(root==null){return 0 } 
-        else{
-            val nodeValue = root.val
-            dfs(root,nodeValue,nodeValue)
+        if(root == null){return 0}
+        else {
+            dfs(root,0)
         }
-
-        return v
-
+        return maxD
     }
 
-    var v = 0 
-    
-    fun dfs(node: TreeNode?, maxValue: Int, minValue: Int){
-        
-        if(node == null){return}
+    var maxD = 0
+
+    fun dfs(node:TreeNode?, edges:Int) : Int{
+
+        // term condition
+        if(node!=null && node?.left == null && node?.right == null){
+            // leaf node
+            return edges
+        }
+        else if(node == null ){
+            return 0
+        }
 
 
-        // logic
-        val nodeValue = node?.`val`?:0
+        //logic
+        val les = dfs(node?.left, edges+1)
+        val res = dfs(node?.right,edges+1)
 
-        val minDiff = abs(minValue- nodeValue)
-        val maxDiff = abs(maxValue- nodeValue)
+        var t1 = 0
+        var t2 = 0 
+        var d = 0 
+        if(les > 0 ){
+            t1 = les - edges
+        }
+        if(res > 0)
+        {
+            t2 = res - edges
+        }
 
-        v = maxOf(minDiff, maxDiff, v)
+        d = t1+t2
 
+        maxD = maxOf(maxD, d)
 
-        dfs(node?.left, maxOf(nodeValue, maxValue), minOf(nodeValue,minValue))
-        dfs(node?.right, maxOf(nodeValue, maxValue), minOf(nodeValue,minValue))
-
+        return maxOf(les,res)
 
     }
 
