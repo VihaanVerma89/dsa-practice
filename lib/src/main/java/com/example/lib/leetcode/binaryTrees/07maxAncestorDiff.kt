@@ -3,7 +3,7 @@ package com.example.lib.leetcode.binaryTrees
 import kotlin.math.abs
 
 
-class maxAncestorDiff {
+class `07maxAncestorDiff` {
 
     /*
     Time - o(n)

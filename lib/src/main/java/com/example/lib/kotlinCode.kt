@@ -3,61 +3,44 @@ package com.example.lib
 import com.example.lib.leetcode.binaryTrees.TreeNode
 
 class Solution{
-
-
-    var minDepth = Int.MAX_VALUE
-
-    fun minDepth(root: TreeNode?): Int{
-
-        if(root == null){return 0 }
-
-        minDepthDfs(root,1)
-
-        return minDepth
-    } 
-
-    fun minDepthDfs(root: TreeNode?, depth: Int):Int{
-
-        // term condition
-        if(root == null){
-            // no more nodes to process
-            return depth
-        }
-        else if(root?.left == null && root?.right == null){
-            // we have leaf node
-            minDepth = minOf(minDepth, depth)
-            return minDepth
+    
+    fun maxAncestorDiff(root:TreeNode?):Int{
+        
+        if(root==null){return 0 } 
+        else{
+            val nodeValue = root.val
+            dfs(root,nodeValue,nodeValue)
         }
 
+        return v
 
-        minDepthDfs(root?.left, depth+1)
-        minDepthDfs(root?.right, depth+1)
+    }
 
-        return depth
+    var v = 0 
+    
+    fun dfs(node: TreeNode?, maxValue: Int, minValue: Int){
+        
+        if(node == null){return}
+
+
+        // logic
+        val nodeValue = node?.`val`?:0
+
+        val minDiff = abs(minValue- nodeValue)
+        val maxDiff = abs(maxValue- nodeValue)
+
+        v = maxOf(minDiff, maxDiff, v)
+
+
+        dfs(node?.left, maxOf(nodeValue, maxValue), minOf(nodeValue,minValue))
+        dfs(node?.right, maxOf(nodeValue, maxValue), minOf(nodeValue,minValue))
+
+
     }
 
 }
 
 fun main(){
-    val root = arrayToTreeNode(arrayOf(2,null,3,null,4,null,5,null,6))
-    Solution().minDepth(root)
+
 }
 
-fun arrayToTreeNode(arr: Array<Int?>): TreeNode? {
-    if (arr.isEmpty() || arr[0] == null) return null
-
-    // Create the root node
-    val root = TreeNode(arr[0]!!)
-    var current = root
-
-    // Iterate through the array to build the tree
-    for (i in 1 until arr.size) {
-        val value = arr[i]
-        if (value != null) {
-            current.right = TreeNode(value)
-            current = current.right!!
-        }
-    }
-
-    return root
-}
