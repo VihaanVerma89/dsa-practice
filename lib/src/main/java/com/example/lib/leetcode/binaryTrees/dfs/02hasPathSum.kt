@@ -1,6 +1,6 @@
-package com.example.lib.leetcode.binaryTrees
+package com.example.lib.leetcode.binaryTrees.dfs
 
-import com.sun.source.tree.Tree
+import com.example.lib.leetcode.binaryTrees.TreeNode
 
 class `02hasPathSum` {
 

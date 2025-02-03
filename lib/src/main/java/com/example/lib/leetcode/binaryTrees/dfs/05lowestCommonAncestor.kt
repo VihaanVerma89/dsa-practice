@@ -1,10 +1,11 @@
-package com.example.lib.leetcode.binaryTrees
+package com.example.lib.leetcode.binaryTrees.dfs
 
+import com.example.lib.leetcode.binaryTrees.TreeNode
 
 
 class Solution{
 
-    fun lowestCommonAncestor(root: TreeNode?, p:TreeNode?, q:TreeNode?): TreeNode?{
+    fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode?{
 
         if(root == null || root ==p || root ==q){
             return root

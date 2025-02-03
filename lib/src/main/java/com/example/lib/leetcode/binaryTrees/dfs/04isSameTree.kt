@@ -1,11 +1,13 @@
-package com.example.lib.leetcode.binaryTrees
+package com.example.lib.leetcode.binaryTrees.dfs
+
+import com.example.lib.leetcode.binaryTrees.TreeNode
 
 
 class isSameTree {
 
 
 
-    fun isSameTree(p: TreeNode?, q:TreeNode?):Boolean{
+    fun isSameTree(p: TreeNode?, q: TreeNode?):Boolean{
 
         var result = false
         if(p == null && q == null){result=true}

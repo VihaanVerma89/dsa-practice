@@ -1,4 +1,6 @@
-package com.example.lib.leetcode.binaryTrees
+package com.example.lib.leetcode.binaryTrees.dfs
+
+import com.example.lib.leetcode.binaryTrees.TreeNode
 
 class `08diameterOfBinaryTree` {
 
@@ -27,7 +29,7 @@ class `08diameterOfBinaryTree` {
     }
 
 */
-    fun diameterOfBinaryTree(root:TreeNode?):Int{
+    fun diameterOfBinaryTree(root: TreeNode?):Int{
 
         if(root == null){return 0}
         else {
@@ -38,7 +40,7 @@ class `08diameterOfBinaryTree` {
 
     var maxD = 0
 
-    fun dfs(node:TreeNode?, edges:Int) : Int{
+    fun dfs(node: TreeNode?, edges:Int) : Int{
 
         // term condition
         if(node!=null && node?.left == null && node?.right == null){
