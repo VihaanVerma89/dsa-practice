@@ -1,34 +1,38 @@
 package com.example.lib
 
 import com.example.lib.leetcode.binaryTrees.TreeNode
+import java.util.LinkedList
+import java.util.Queue
 
-class Solution{
+class Solution {
 
-    var maxD=0
+    fun rightSideView(root: TreeNode?): List<Int> {
 
-    fun diameterOfBinaryTree(root:TreeNode?):Int{
-        dfs(root)
-        return maxD
+        val result = mutableListOf<Int>()
+        if (root == null) {
+            return result
+        } else {
+            val q: Queue<TreeNode> = LinkedList()
+            q.add(root)
+
+            while (q.isNotEmpty()) {
+                val childNodes = q.size
+                for (i in 0 until childNodes) {
+                    val node = q.poll()
+                    node?.left?.let { q.add(it) }
+                    node?.right?.let { q.add(it) }
+                    if (i == childNodes - 1) {
+                        // we are at the last node for current level
+                        result.add(node.`val`)
+                    }
+                }
+            }
+        }
+        return result
     }
-
-    fun dfs(node: TreeNode?):Int{
-        // term condition
-        if(node == null){return 0}
-
-        // traversal
-        val leftHeight = dfs(node.left)
-        val rightHeight = dfs(node.right)
-
-        maxD = maxOf(maxD, leftHeight + rightHeight)
-
-        // logic
-        return 1 + maxOf(leftHeight, rightHeight)
-    }
-
-
 }
 
-fun main(){
+fun main() {
 
 }
 
