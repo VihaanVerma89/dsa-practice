@@ -1,10 +1,10 @@
-package com.example.lib
+package com.example.lib.leetcode.binaryTrees.bfs
 
 import com.example.lib.leetcode.binaryTrees.TreeNode
 import java.util.LinkedList
 import java.util.Queue
 
-class Solution {
+class LargestValue {
 
 
     fun largestValues(root: TreeNode?):List<Int>{
@@ -28,10 +28,10 @@ class Solution {
                     val node = q.poll()
 
                     maxChildNode = maxOf(maxChildNode, node.`val`)
-                    
+
                     node?.left?.let{q.add(it)}
                     node?.right?.let{q.add(it)}
-                    
+
                 }
                 result.add(maxChildNode)
             }
@@ -39,10 +39,4 @@ class Solution {
 
         return result
     }
-
 }
-
-fun main() {
-
-}
-
