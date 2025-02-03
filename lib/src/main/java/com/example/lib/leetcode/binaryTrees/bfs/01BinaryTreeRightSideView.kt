@@ -1,10 +1,39 @@
-package com.example.lib.topics.trees.dfs
+package com.example.lib.leetcode.binaryTrees.bfs
 
 import com.example.lib.leetcode.binaryTrees.TreeNode
 import java.util.*
 
 //https://leetcode.com/problems/binary-tree-right-side-view/
 class BinaryTreeRightSideView {
+/*
+ 	•	Time Complexity: O(N)
+	•	Space Complexity: O(W) (worst case O(N))
+*/
+    fun rightSideView(root: TreeNode?): List<Int> {
+
+        val result = mutableListOf<Int>()
+        if (root == null) {
+            return result
+        } else {
+            val q: Queue<TreeNode> = LinkedList()
+            q.add(root)
+
+            while (q.isNotEmpty()) {
+                val childNodes = q.size
+                for (i in 0 until childNodes) {
+                    val node = q.poll()
+                    node?.left?.let { q.add(it) }
+                    node?.right?.let { q.add(it) }
+                    if (i == childNodes - 1) {
+                        // we are at the last node for current level
+                        result.add(node.`val`)
+                    }
+                }
+            }
+        }
+        return result
+    }
+
     fun rightSideView1(root: TreeNode?): List<Int> {
 
         val l = mutableListOf<Int>()
@@ -37,7 +66,7 @@ class BinaryTreeRightSideView {
         return l
     }
 
-    fun rightSideView(root: TreeNode?): List<Int> {
+    fun rightSideView2(root: TreeNode?): List<Int> {
 
         val result = arrayListOf<Int>()
         if (root == null) {
@@ -84,6 +113,6 @@ class BinaryTreeRightSideView {
 fun main() {
     val o = BinaryTreeRightSideView()
     val treeNode = TreeNode(0)
-    o.rightSideView(treeNode)
+    o.rightSideView2(treeNode)
 }
 
