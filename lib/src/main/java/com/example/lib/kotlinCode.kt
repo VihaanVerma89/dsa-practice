@@ -4,51 +4,27 @@ import com.example.lib.leetcode.binaryTrees.TreeNode
 
 class Solution{
 
+    var maxD=0
+
     fun diameterOfBinaryTree(root:TreeNode?):Int{
-        
-        if(root == null){return 0}
-        else {
-            dfs(root,0)
-        }
+        dfs(root)
         return maxD
     }
 
-    var maxD = 0
-
-    fun dfs(node:TreeNode?, edges:Int) : Int{
-
+    fun dfs(node: TreeNode?):Int{
         // term condition
-        if(node!=null && node?.left == null && node?.right == null){
-            // leaf node
-            return edges
-        }
-        else if(node == null ){
-            return 0
-        }
+        if(node == null){return 0}
 
+        // traversal
+        val leftHeight = dfs(node.left)
+        val rightHeight = dfs(node.right)
 
-        //logic
-        val les = dfs(node?.left, edges+1)
-        val res = dfs(node?.right,edges+1)
+        maxD = maxOf(maxD, leftHeight + rightHeight)
 
-        var t1 = 0
-        var t2 = 0 
-        var d = 0 
-        if(les > 0 ){
-            t1 = les - edges
-        }
-        if(res > 0)
-        {
-            t2 = res - edges
-        }
-
-        d = t1+t2
-
-        maxD = maxOf(maxD, d)
-
-        return maxOf(les,res)
-
+        // logic
+        return 1 + maxOf(leftHeight, rightHeight)
     }
+
 
 }
 

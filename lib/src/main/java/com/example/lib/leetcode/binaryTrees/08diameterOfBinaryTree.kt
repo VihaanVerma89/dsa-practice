@@ -1,8 +1,32 @@
 package com.example.lib.leetcode.binaryTrees
 
-class diameterOfBinaryTree {
+class `08diameterOfBinaryTree` {
 
 
+/*
+    Note : Copied from GTP
+    var maxD = 0  // To keep track of the maximum diameter
+
+    fun diameterOfBinaryTree(root: TreeNode?): Int {
+        dfs(root)
+        return maxD
+    }
+
+    // DFS to calculate height and update diameter
+    fun dfs(node: TreeNode?): Int {
+        if (node == null) return 0
+
+        val leftHeight = dfs(node.left)
+        val rightHeight = dfs(node.right)
+
+        // Update the maximum diameter
+        maxD = maxOf(maxD, leftHeight + rightHeight)
+
+        // Return the height of the current node
+        return 1 + maxOf(leftHeight, rightHeight)
+    }
+
+*/
     fun diameterOfBinaryTree(root:TreeNode?):Int{
 
         if(root == null){return 0}
