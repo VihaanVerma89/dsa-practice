@@ -5,6 +5,39 @@ import kotlin.collections.ArrayList
 
 class zigzagLevelOrder {
 
+
+    fun zigzagLevelOrder(root: TreeNode?): List<List<Int>> {
+        val result = mutableListOf<List<Int>>()
+        if (root == null) return result
+
+        val queue: Queue<TreeNode> = LinkedList()
+        queue.add(root)
+        var leftToRight = true
+
+        while (queue.isNotEmpty()) {
+            val levelSize = queue.size
+            val levelNodes = LinkedList<Int>()
+
+            for (i in 0 until levelSize) {
+                val node = queue.poll()
+
+                if (leftToRight) {
+                    levelNodes.add(node.`val`)
+                } else {
+                    levelNodes.addFirst(node.`val`)
+                }
+
+                node.left?.let { queue.add(it) }
+                node.right?.let { queue.add(it) }
+            }
+
+            result.add(levelNodes)
+            leftToRight = !leftToRight  // Toggle direction
+        }
+
+        return result
+    }
+
     // works but uses a stack for right to left traversal on level
     fun zigzagLevelOrderWithStack(root: TreeNode?): List<List<Int>> {
         val r = arrayListOf<ArrayList<Int>>()
@@ -72,7 +105,7 @@ class zigzagLevelOrder {
 //    }
 
 //    solution from https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/editorial/
-    fun zigzagLevelOrder(root: TreeNode?): List<List<Int?>?>? {
+    fun zigzagLevelOrderEditorial(root: TreeNode?): List<List<Int?>?>? {
         if (root == null) {
             return ArrayList()
         }

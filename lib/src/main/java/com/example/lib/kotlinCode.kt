@@ -7,37 +7,10 @@ import java.util.Queue
 class Solution {
 
 
-    fun largestValues(root: TreeNode?):List<Int>{
+    fun zigzagLevelOrder(root: TreeNode?): List<List<Int>> {
 
-        val result = mutableListOf<Int>()
-        if(root == null){ return result}
-        else{
 
-            val q : Queue<TreeNode> = LinkedList()
-            q.add(root)
 
-            var maxChildNode = Int.MIN_VALUE
-
-            while(q.isNotEmpty()){
-
-                val childNodes = q.size
-                maxChildNode = Int.MIN_VALUE
-
-                for(i in 0 until childNodes){
-
-                    val node = q.poll()
-
-                    maxChildNode = maxOf(maxChildNode, node.`val`)
-                    
-                    node?.left?.let{q.add(it)}
-                    node?.right?.let{q.add(it)}
-                    
-                }
-                result.add(maxChildNode)
-            }
-        }
-
-        return result
     }
 
 }
