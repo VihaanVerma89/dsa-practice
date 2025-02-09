@@ -5,6 +5,9 @@ import kotlin.collections.ArrayList
 
 class zigzagLevelOrder {
 
+    /*
+    Check out array dequeue for this problem
+     */
 
     fun zigzagLevelOrder(root: TreeNode?): List<List<Int>> {
         val result = mutableListOf<List<Int>>()
