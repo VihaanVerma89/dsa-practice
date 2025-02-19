@@ -12,11 +12,5 @@ class Solution {
 }
 
 fun main() {
-
-    val input = intArrayOf(0,1,0,3,12)
-//    Solution().moveZeroes(input)
-
-    println(input.contentToString())
-
 }
 

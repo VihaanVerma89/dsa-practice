@@ -15,8 +15,9 @@ class isValidBST {
         if(node == null) { return true}
 
         val value = node.`val`
-        if(value>= l || value <= s) return false
+//        if(value>= l || value <= s) return false
 
+        println("node value : $value , s: $s, l: $l")
 
         val left = dfs(node?.left, s, node.`val`.toLong())
         val right = dfs(node?.right, node.`val`.toLong(),l)
@@ -46,6 +47,19 @@ fun invalidBstTest() {
     val solution = instance.isValidBST(root)
 }
 
+/*
+        10
+       /  \
+      5    15
+          /   \
+        14     20
+       /  \
+     13    16
+    /        \
+   6         17
+
+
+ */
 fun invalidBstTest1() {
     val instance = isValidBST()
 
