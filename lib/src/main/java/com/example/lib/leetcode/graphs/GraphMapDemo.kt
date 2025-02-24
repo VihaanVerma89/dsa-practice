@@ -1,6 +1,6 @@
 package com.example.lib.leetcode.graphs
 
-class GraphDemo {
+class GraphMapDemo {
 
     val graphMap = mutableMapOf<Int, MutableList<Int>>()
 
@@ -39,6 +39,20 @@ class GraphMatrix(private val size: Int) {
     }
 }
 
+// leet code edges array input
+// edges = [[0, 1], [1, 2], [2, 0], [2, 3]]
+fun buildGraphFromEdges(edges: Array<IntArray>): Map<Int,MutableList<Int>>{
+    val graph = mutableMapOf<Int,MutableList<Int>>()
+
+    for(edge in edges){
+        val (s,e) = edge
+        graph.computeIfAbsent(s){ mutableListOf<Int>() }.add(e)
+        graph.computeIfAbsent(e){ mutableListOf<Int>() }.add(s)
+    }
+
+    return graph
+}
+
 fun main() {
 
     mapDemo()
@@ -48,7 +62,7 @@ fun main() {
 }
 
 fun mapDemo() {
-    val graph = GraphDemo()
+    val graph = GraphMapDemo()
     graph.addEdgeInMap(1, 2)
     graph.addEdgeInMap(1, 3)
     graph.addEdgeInMap(2, 4)
@@ -64,3 +78,4 @@ fun matrixDemo() {
     graph.addEdge(2, 4)
     graph.printMatrix()
 }
+
