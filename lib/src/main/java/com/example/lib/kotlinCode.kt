@@ -3,58 +3,68 @@ package com.example.lib
 class Solution {
 
 
-    fun findCircleNum(isConnected: Array<IntArray>): Int {
+    fun numIslands(grid: Array<CharArray>):Int{
 
-        val r = isConnected.size
-        val c = isConnected[0].size
+        val rows = grid.size
+        val cols = grid[0].size
 
-        val graphMap = mutableMapOf<Int, MutableList<Int>>()
+        val hSet = hashSetOf<String>()
+        var result = 0
 
-        for (i in 0 until r) {
+        for(r in 0 until rows){
 
-            for (j in 0 until c) {
-                val value = isConnected[i][j]
-                if (value == 1) {
-                    graphMap.computeIfAbsent(i) { mutableListOf<Int>() }.add(j)
-                    graphMap.computeIfAbsent(j) { mutableListOf<Int>() }.add(i)
+            for(c in 0 until cols){
+                if(grid[r][c]=='1'){
+
+                    if(hSet.contains("$r,$c"))
+                    {
+                        //already visited
+                    }
+                    else{
+
+                        dfs(grid,hSet, r,c)
+                        result++
+                    }
                 }
             }
         }
-
-        // graphMap is ready
-
-        val visited = hashSetOf<Int>()
-        var p = 0
-
-        for ((k, v) in graphMap) {
-
-            if (visited.contains(k)) {
-
-            } else {
-                dfs(graphMap, visited, k)
-                p++
-            }
-        }
-
-        return p
+        return result
 
     }
 
-    fun dfs(graphMap: MutableMap<Int, MutableList<Int>>, visited: HashSet<Int>, node: Int) {
+    fun dfs(grid: Array<CharArray>, hSet: HashSet<String>,r: Int, c:Int){
 
-        if (visited.contains(node)) {
+        // term condition
+        if(hSet.contains("$r,$c")){
+            return
+          }
 
-        } else {
-            visited.add(node)
-            val connectedNodes = graphMap.get(node)
-            if (connectedNodes != null) {
-                for (node in connectedNodes) {
-                    dfs(graphMap, visited, node)
-                }
-            }
-        }
+       hSet.add("$r,$c")
+
+       if(c-1 >= 0)
+       {
+           val l = grid[r][c-1]
+           if(l=='1'){ dfs(grid, hSet, r, c-1) }
+       }
+       if(c+1 < grid[0].size){
+           val rv = grid[r][c+1]
+           if(rv=='1'){ dfs(grid, hSet, r, c+1) }
+       }
+
+       if(r-1>=0)
+       {
+           val u = grid[r-1][c]
+           if(u=='1'){ dfs(grid, hSet, r-1, c) }
+       }
+
+       if(r+1 <grid.size)
+       {
+           val d = grid[r+1][c]
+           if(d=='1'){ dfs(grid, hSet, r+1, c) }
+       }
 
     }
+
 
 }
 
