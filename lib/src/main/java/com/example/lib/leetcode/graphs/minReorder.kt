@@ -45,7 +45,7 @@ class minReorder {
                     }
                     dfs(nextCity)
                 }
-            emptyArray<>()
+            }
         }
 
         dfs(0)
