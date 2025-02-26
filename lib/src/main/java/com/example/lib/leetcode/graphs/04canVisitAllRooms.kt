@@ -1,6 +1,6 @@
 package com.example.lib.leetcode.graphs
 
-class canVisitAllRooms {
+class `04canVisitAllRooms` {
 
 
     val vHashSet = hashSetOf<Int>()

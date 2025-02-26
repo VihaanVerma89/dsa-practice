@@ -8,51 +8,47 @@ class minReorder {
     val visitedHashSet = hashSetOf<Int>()
 
 
-    fun minReorder(n: Int, connections: Array<IntArray>): Int {
-
-        //graph
+    fun minReorder(n: Int, connections: Array<IntArray>): Int{
 
         val graph = mutableMapOf<Int, MutableList<Pair<Int, Boolean>>>()
 
-        for (c in connections) {
+        for(c in connections){
 
             val s = c[0]
             val e = c[1]
 
-            graph.getOrPut(s) { mutableListOf() }.add(Pair(e, true))
-            graph.getOrPut(e) { mutableListOf() }.add(Pair(s, false))
-
+            graph.getOrPut(s){ mutableListOf() }.add(Pair(e,true))
+            graph.getOrPut(e){ mutableListOf() }.add(Pair(s, false))
         }
 
+        var count = 0
+        var visited = hashSetOf<Int>()
 
-        val visited = mutableSetOf<Int>()
-
-        var changes = 0
-        fun dfs(city: Int) {
+        fun dfs(city: Int){
 
             visited.add(city)
 
-            val connections = graph.getOrDefault(city, emptyList())
+            val cities = graph.getOrDefault(city, emptyList())
 
-            for (c in connections) {
+            for(c in cities){
 
                 val nextCity = c.first
                 val isTrue = c.second
 
-                if (visited.contains(nextCity).not()) {
-                    if (isTrue) {
-                        changes++
-                    }
+                if(visited.contains(nextCity).not())
+                {
+                    if(isTrue){ count++ }
                     dfs(nextCity)
                 }
+
             }
+
         }
 
         dfs(0)
-        return changes
+        return count
+
     }
-
-
 
 
     fun dfs2(
