@@ -7,7 +7,55 @@ class minReorder {
 
     val visitedHashSet = hashSetOf<Int>()
 
-    fun dfs(
+
+    fun minReorder(n: Int, connections: Array<IntArray>): Int {
+
+        //graph
+
+        val graph = mutableMapOf<Int, MutableList<Pair<Int, Boolean>>>()
+
+        for (c in connections) {
+
+            val s = c[0]
+            val e = c[1]
+
+            graph.getOrPut(s) { mutableListOf() }.add(Pair(e, true))
+            graph.getOrPut(e) { mutableListOf() }.add(Pair(s, false))
+
+        }
+
+
+        val visited = mutableSetOf<Int>()
+
+        var changes = 0
+        fun dfs(city: Int) {
+
+            visited.add(city)
+
+            val connections = graph.getOrDefault(city, emptyList())
+
+            for (c in connections) {
+
+                val nextCity = c.first
+                val isTrue = c.second
+
+                if (visited.contains(nextCity).not()) {
+                    if (isTrue) {
+                        changes++
+                    }
+                    dfs(nextCity)
+                }
+            emptyArray<>()
+        }
+
+        dfs(0)
+        return changes
+    }
+
+
+
+
+    fun dfs2(
         node: Int?, parent: Int, hmap: HashMap<Int, ArrayList<List<Any>>>
     ) {
 
@@ -24,7 +72,7 @@ class minReorder {
 
                     if (child != parent) {
                         count+=direction
-                        dfs(child, node, hmap)
+                        dfs2(child, node, hmap)
                     } else {
                         // pointing to parent
                     }
@@ -34,7 +82,7 @@ class minReorder {
     }
 
     var count = 0
-    fun minReorder(n: Int, connections: Array<IntArray>): Int {
+    fun minReorder2(n: Int, connections: Array<IntArray>): Int {
 
         val hmap = hashMapOf<Int, ArrayList<List<Any>>>()
 
@@ -58,7 +106,7 @@ class minReorder {
             }
         }
 
-        dfs(0, -1, hmap)
+        dfs2(0, -1, hmap)
 
         return count
     }
@@ -104,6 +152,6 @@ fun main() {
         intArrayOf(4, 0),
         intArrayOf(4, 5),
     )
-    minReorder().minReorder(6, input)
+    minReorder().minReorder2(6, input)
 //    minReorder().minReorder1(6, input)
 }

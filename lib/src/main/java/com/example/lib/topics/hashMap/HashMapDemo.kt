@@ -29,4 +29,11 @@ fun main() {
         println("$i time")
         o.printKeys(hashMap)
     }
+
+    val getOrPut = hashMap.getOrPut("11") { "elevent"}
+    println("getOrPut $getOrPut")
+
+
+    val getOrDefault = hashMap.getOrDefault("12", "twelve")
+    println("getOrDefault $getOrDefault")
 }
