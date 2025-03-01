@@ -4,85 +4,52 @@ import java.util.LinkedList
 
 class Solution {
 
+    /*
+    time- o(n+m+r)
+    o(m) + o(r) + o(n) = o(m+n+r)
+    space - o (n + m + r)
+     */
+    fun reachableNodes(n: Int, edges: Array<IntArray>, restricted: IntArray): Int {
 
-    fun maxAreaOfIsland(grid: Array<IntArray>): Int{
+        val graph = mutableMapOf<Int, MutableList<Int>>()
 
-        val rows = grid.size
-        val cols = grid[0].size
-        val visited = hashSetOf<String>()
-        var maxArea = 0
-        var area = 0
+        // o(m)
+        for(edge in edges){
+            val s = edge[0]
+            val e = edge[1]
 
+            graph.getOrPut(s){ mutableListOf() }.add(e)
+            graph.getOrPut(e){ mutableListOf() }.add(s)
 
-        fun dfs(r: Int, c: Int){
+        }
 
+        val visited = hashSetOf<Int>()
+        val rSet = hashSetOf<Int>()
+        // o(r)
+        for(r in restricted){
+            rSet.add(r)
+        }
 
-            val node = "$r,$c"
+        // o(n)
+        fun dfs(node: Int) {
+
             if(visited.contains(node)){
                 return
             }
-            else {
-                visited.add(node)
-            }
-
-
-            val value = grid[r][c]
-
-            if(value == 0 )
-            {
+            else if(rSet.contains(node)){
                 return
             }
 
+            visited.add(node)
 
-            area++
-
-            if(c-1>=0 && grid[r][c-1]==1){
-                dfs(r,c-1)
+            for(childNode in graph.get(node).orEmpty()){
+                dfs(childNode)
             }
-            if( c+1<grid[0].size && grid[r][c+1]==1){
-                dfs(r,c+1)
-            }
-            if(r-1>=0 && grid[r-1][c]==1){
-                dfs(r-1,c)
-            }
-            if(r+1<grid.size && grid[r+1][c]==1){
-                dfs(r+1,c)
-            }
-
-
-
         }
 
-        for(r in 0 until rows){
-            for(c in 0 until cols){
-
-                val value = grid[r][c]
-                if(value ==1){
-
-                    if(visited.contains("$r,$c"))
-                    {
-
-                    }else{
-                        dfs(r,c)
-                        maxArea = maxOf(maxArea,area)
-                        area = 0 
-                    }
-                }
-
-            }
-          
-        }
-
-
-
-
-        return maxArea
-
+        dfs(0)
+        return visited.size
     }
-
-
-
-
 
 }
 
