@@ -14,3 +14,20 @@ snapshots
 _site
 *.apk
 
+
+
+# Vim swap files
+*.swp
+*.swo
+*.swn
+
+# Vim backup files
+*.bak
+*.tmp
+*.orig
+
+# Vim session files
+Session.vim
+
+# Vim undo files
+*.un~

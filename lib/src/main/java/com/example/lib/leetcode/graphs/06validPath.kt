@@ -3,8 +3,49 @@ package com.example.lib.leetcode.graphs
 // https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/4693/
 class validPath {
 
+    fun validPath(n: Int, edges: Array<IntArray>, source: Int, destination: Int): Boolean {
+
+        val graph = mutableMapOf<Int, MutableList<Int>>()
+
+        for (edge in edges) {
+
+            val s = edge[0]
+            val e = edge[1]
+            graph.getOrPut(s) { mutableListOf() }.add(e)
+            graph.getOrPut(e) { mutableListOf() }.add(s)
+
+        }
+
+
+        val hSet = hashSetOf<Int>()
+
+        fun dfs(node: Int) {
+
+            hSet.add(node)
+            if (node == destination) {
+                return
+            }
+
+            val nodes = graph.get(node).orEmpty()
+            for (nextNode in nodes) {
+                if (hSet.contains(nextNode)) {
+
+                } else {
+                    dfs(nextNode)
+                }
+            }
+        }
+
+        dfs(source)
+
+        return hSet.contains(destination)
+
+    }
+
+
+
     val visitedNodes = hashSetOf<Int>()
-    fun dfs(hmap: HashMap<Int, ArrayList<Int>>, source: Int, destination: Int): Boolean {
+    fun dfs1(hmap: HashMap<Int, ArrayList<Int>>, source: Int, destination: Int): Boolean {
 
         var result = false
         if (source == destination) {
@@ -17,7 +58,7 @@ class validPath {
         if (vertices != null) {
             for (vertice in vertices) {
                 if (!visitedNodes.contains(vertice)) {
-                    result = dfs(hmap, vertice, destination)
+                    result = dfs1(hmap, vertice, destination)
                     if(result)
                         break;
                 }
@@ -26,7 +67,7 @@ class validPath {
         return result
     }
 
-    fun validPath(n: Int, edges: Array<IntArray>, source: Int, destination: Int): Boolean {
+    fun validPath1(n: Int, edges: Array<IntArray>, source: Int, destination: Int): Boolean {
 
         var reachable = false
 
@@ -62,7 +103,7 @@ class validPath {
 
         } else if (sourceConnections.isNotEmpty()) {
             // dfs to reach destination
-            reachable = dfs(hMap, source, destination)
+            reachable = dfs1(hMap, source, destination)
         }
         return reachable
     }
@@ -87,6 +128,6 @@ fun main() {
     val source = 7
     val destination = 5
 
-    val reachable = validPath().validPath(n, input, source, destination)
+    val reachable = validPath().validPath1(n, input, source, destination)
     println("reachable : $reachable")
 }
