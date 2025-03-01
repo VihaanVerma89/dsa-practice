@@ -1,10 +1,6 @@
-package com.example.lib
+package com.example.lib.leetcode.graphs
 
-import java.util.LinkedList
-
-class Solution {
-
-
+class MaxAreaOfIsland {
     fun maxAreaOfIsland(grid: Array<IntArray>): Int{
 
         val rows = grid.size
@@ -65,27 +61,15 @@ class Solution {
                     }else{
                         dfs(r,c)
                         maxArea = maxOf(maxArea,area)
-                        area = 0 
+                        area = 0
                     }
                 }
 
             }
-          
+
         }
-
-
-
 
         return maxArea
 
     }
-
-
-
-
-
 }
-
-fun main() {
-}
-
