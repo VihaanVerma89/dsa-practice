@@ -1,5 +1,7 @@
 package com.example.lib.leetcode.graphs
 
+import java.util.LinkedList
+
 class GraphMapDemo {
 
     val graphMap = mutableMapOf<Int, MutableList<Int>>()
@@ -16,7 +18,34 @@ class GraphMapDemo {
         for ((key, value) in graphMap) {
             println("$key -> $value ")
         }
+    }
 
+    fun bfs(node: Int) {
+
+        val q = LinkedList<Int>()
+        val seen = hashSetOf<Int>()
+
+        q.add(node)
+        seen.add(node)
+
+        while (q.isNotEmpty()) {
+
+            val currentNode = q.poll()
+            println("currentNode: $currentNode")
+
+            val nodes = graphMap.get(currentNode).orEmpty()
+            for (n in nodes) {
+
+                if (seen.contains(n)) {
+                    // already visited
+                } else {
+                    q.add(n)
+                    seen.add(n)
+                }
+
+            }
+
+        }
     }
 
 
@@ -41,13 +70,13 @@ class GraphMatrix(private val size: Int) {
 
 // leet code edges array input
 // edges = [[0, 1], [1, 2], [2, 0], [2, 3]]
-fun buildGraphFromEdges(edges: Array<IntArray>): Map<Int,MutableList<Int>>{
-    val graph = mutableMapOf<Int,MutableList<Int>>()
+fun buildGraphFromEdges(edges: Array<IntArray>): Map<Int, MutableList<Int>> {
+    val graph = mutableMapOf<Int, MutableList<Int>>()
 
-    for(edge in edges){
-        val (s,e) = edge
-        graph.computeIfAbsent(s){ mutableListOf<Int>() }.add(e)
-        graph.computeIfAbsent(e){ mutableListOf<Int>() }.add(s)
+    for (edge in edges) {
+        val (s, e) = edge
+        graph.computeIfAbsent(s) { mutableListOf<Int>() }.add(e)
+        graph.computeIfAbsent(e) { mutableListOf<Int>() }.add(s)
     }
 
     return graph
@@ -68,6 +97,7 @@ fun mapDemo() {
     graph.addEdgeInMap(2, 4)
     graph.addEdgeInMap(3, 4)
     graph.printMapGraph()
+    graph.bfs(1)
 }
 
 fun matrixDemo() {
