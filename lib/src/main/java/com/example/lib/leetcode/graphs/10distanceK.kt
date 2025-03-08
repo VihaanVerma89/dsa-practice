@@ -1,10 +1,9 @@
-package com.example.lib
+package com.example.lib.leetcode.graphs
 
 import com.example.lib.leetcode.binaryTrees.TreeNode
 import java.util.LinkedList
 
-class Solution {
-
+class distanceK {
 
     fun distanceK(root: TreeNode?, target: TreeNode?, k: Int): List<Int> {
 
@@ -64,7 +63,7 @@ class Solution {
 
 
                 for (node in graph.get(cn.value).orEmpty()) {
-                    if(!seen.contains(node)){
+                    if (!seen.contains(node)) {
                         q.add(Node(node, cn.distance + 1))
                         seen.add(node)
                     }
@@ -78,14 +77,5 @@ class Solution {
         return result
     }
 
-}
-
-
-fun main() {
-    val instance = Solution()
-    val grid = arrayOf(
-        intArrayOf(0, 1),
-        intArrayOf(1, 0)
-    )
 }
 
