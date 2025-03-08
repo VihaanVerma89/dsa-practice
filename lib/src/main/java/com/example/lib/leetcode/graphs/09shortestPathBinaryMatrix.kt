@@ -4,39 +4,88 @@ import java.util.LinkedList
 import java.util.Queue
 
 class shortestPathBinaryMatrix {
-    fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int {
-        val n = grid.size
-        // Check if the start or end is blocked
-        if (grid[0][0] != 0 || grid[n - 1][n - 1] != 0) return -1
 
-        // Directions for 8 possible movements
-        val directions = arrayOf(
-            intArrayOf(0, 1), intArrayOf(1, 0), intArrayOf(0, -1), intArrayOf(-1, 0),
-            intArrayOf(1, 1), intArrayOf(1, -1), intArrayOf(-1, 1), intArrayOf(-1, -1)
+    fun shortestPathBinaryMatrix(grid: Array<IntArray>): Int{
+
+        val n = grid.size
+        var result =-1
+
+        if(grid[0][0] != 0 || grid[n-1][n-1] != 0) return -1
+
+        val q = LinkedList<Triple<Int,Int,Int>>()
+
+        q.add(Triple(0,0,1))
+
+        val dirs = arrayOf(
+            intArrayOf(0,-1), // l
+            intArrayOf(0,1), // r
+            intArrayOf(-1,0), // u
+            intArrayOf(1,0), // d
+            intArrayOf(-1,-1), // u l
+            intArrayOf(-1,1), //  u r
+            intArrayOf(1,-1), // d l
+            intArrayOf(1,1), // d r
         )
 
-        val queue: Queue<Triple<Int, Int, Int>> = LinkedList() // (x, y, pathLength)
-        queue.offer(Triple(0, 0, 1))
-        grid[0][0] = 1 // Mark as visited
+        while(q.isNotEmpty()){
+            val (r,c,s) = q.poll()
 
-        while (queue.isNotEmpty()) {
-            val (x, y, pathLength) = queue.poll()
+            if(r == n-1 && c ==n-1){
+                result = s
+                break
+            }
 
-            // If we reached the bottom-right cell, return the path length
-            if (x == n - 1 && y == n - 1) return pathLength
+            for(d in dirs){
 
-            // Explore all 8 directions
-            for (dir in directions) {
-                val newX = x + dir[0]
-                val newY = y + dir[1]
-                if (newX in 0 until n && newY in 0 until n && grid[newX][newY] == 0) {
-                    queue.offer(Triple(newX, newY, pathLength + 1))
-                    grid[newX][newY] = 1 // Mark as visited
+                val nr = r+d[0]
+                val nc = c+d[1]
+
+                if(nr in 0 until n && nc in 0 until n && grid[nr][nc]==0){
+                    q.add(Triple(nr,nc,s+1))
+                    grid[nr][nc]=-1
                 }
             }
+
         }
 
-        // No path found
-        return -1
+        return result
+
+    }
+
+    fun test(){
+
+        val dirs = arrayOf(
+            intArrayOf(1,1), // bottom right
+            intArrayOf(0,1), // right
+            intArrayOf(1,0), // down
+            intArrayOf(-1,-1), // bottom left
+            intArrayOf(-1,0),//left
+            intArrayOf(-1,-1), // top left
+            intArrayOf(0,-1), // top
+            intArrayOf(-1,1), // top right
+        )
+
+        val dirs1 = arrayOf(
+            intArrayOf(0,-1), // l
+            intArrayOf(0,1), // r
+            intArrayOf(-1,0), // up
+            intArrayOf(1,0), // down
+            intArrayOf(1,1), // b right
+            intArrayOf(-1,-1), // b left
+            intArrayOf(-1,1), // top r
+            intArrayOf(-1,-1), // top left
+        )
+
+
+
+        var r = 0
+        var c = 0
+        for(d in dirs){
+
+            var newR = r + d[0]
+            var newC = c + d[1]
+
+            println("new r,c : $newR,$newC")
+        }
     }
 }
