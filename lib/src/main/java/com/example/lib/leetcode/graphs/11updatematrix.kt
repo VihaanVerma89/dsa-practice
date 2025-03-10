@@ -1,10 +1,9 @@
-package com.example.lib
+package com.example.lib.leetcode.graphs
 
-import com.example.lib.leetcode.binaryTrees.TreeNode
 import java.util.LinkedList
 
-class Solution {
-
+// https://leetcode.com/problems/01-matrix/description/
+class updatematrix {
     fun updateMatrix(mat: Array<IntArray>): Array<IntArray>{
 
         val rows = mat.size
@@ -17,7 +16,7 @@ class Solution {
         for( r in 0 until  rows){
             for(c in 0 until cols){
                 if( mat[r][c] == 0 ){
-                    dist[r][c] = 0 
+                    dist[r][c] = 0
                     q.offer(Pair(r,c))
                 }
             }
@@ -52,13 +51,3 @@ class Solution {
     }
 
 }
-
-
-fun main() {
-    val instance = Solution()
-    val grid = arrayOf(
-        intArrayOf(0, 1),
-        intArrayOf(1, 0)
-    )
-}
-
