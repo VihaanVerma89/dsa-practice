@@ -5,52 +5,59 @@ import java.util.LinkedList
 
 class Solution {
 
-    fun updateMatrix(mat: Array<IntArray>): Array<IntArray>{
 
-        val rows = mat.size
-        val cols = mat[0].size
+    fun shortestAlternatingPaths(n: Int, redEdges: Array<IntArray>, blueEdges: Array<IntArray>): IntArray{
 
-        val dist = Array(rows){ IntArray(cols){ Int.MAX_VALUE } }
-        val q = LinkedList<Pair<Int,Int>>()
+        val rGraph = mutableMapOf<Int, MutableList<Int>>()
+        val bGraph = mutableMapOf<Int, MutableList<Int>>()
 
+        for(i in redEdges){
+            val s = i[0]
+            val e = i[1]
 
-        for( r in 0 until  rows){
-            for(c in 0 until cols){
-                if( mat[r][c] == 0 ){
-                    dist[r][c] = 0 
-                    q.offer(Pair(r,c))
-                }
-            }
+            rGraph.getOrPut(s){ mutableListOf() }.add(e)
         }
 
-        val dirs = arrayOf(
-            intArrayOf(0,1),
-            intArrayOf(0,-1),
-            intArrayOf(1,0),
-            intArrayOf(-1,0)
-        )
+        for( i in blueEdges){
+
+            val s = i[0]
+            val e = i[1]
+            bGraph.getOrPut(s){ mutableListOf() }.add(e)
+        }
+
+        // bfs
+
+        data class Node(val value:Int, val ec: Int, val d: Int )
+
+        val q = LinkedList<Node>()
+
+        q.add(Node(0,0,0))
+        q.add(Node(0,1,0))
+
+        val dist =  Array(2){ IntArray(2){ Int.MAX_VALUE } }
+        dist[0][0] = 0
+        dist[0][1] = 0
 
         while(q.isNotEmpty()){
-            val (r,c) = q.poll()
 
-            for(d in dirs){
-                val nr = r + d[0]
-                val nc = c + d[1]
+            val currNode = q.poll()
 
-                if( nr in 0 until rows && nc in 0 until cols){
-                    if(dist[nr][nc] > dist[r][c] +1 ){
+            val graph = if(currNode.ec == 0) bGraph else rGraph
+            
+            val nodes = grpah.getOrDefault(currNode, emptyList())
+            val nextColor = 1 - currNode.ec
 
-                        dist[nr][nc]= dist[r][c] + 1
-                        q.offer(Pair(nr,nc))
-                    }
+            for(node in nodes){
+                if(currNode.d+1 < dist[node][nextColor])
+                {
+                    q.add(Node(node, nextColor, currNode.d+1)
                 }
             }
+
         }
 
-        return dist
 
     }
-
 }
 
 
