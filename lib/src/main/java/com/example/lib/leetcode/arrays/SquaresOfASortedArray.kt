@@ -2,7 +2,35 @@ package com.example.lib.leetcode.arrays
 
 class SquaresOfASortedArray {
 
+
     fun sortedSquares(nums: IntArray): IntArray {
+
+        var l = 0
+        var r = nums.size - 1
+
+        var pos = r
+        val result = IntArray(nums.size){0}
+
+        while( l<=r ){
+
+            val ls = nums[l] * nums[l]
+            val rs = nums[r] * nums[r]
+
+            if( ls <= rs ){
+                result[pos] = rs
+                r--
+            }else{
+                result[pos] = ls
+                l++
+            }
+
+            pos--
+        }
+
+        return result
+    }
+
+    fun sortedSquares4(nums: IntArray): IntArray {
 
         var i = 0
         var j = nums.size - 1
