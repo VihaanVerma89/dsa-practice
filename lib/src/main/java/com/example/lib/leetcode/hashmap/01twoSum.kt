@@ -1,10 +1,6 @@
-package com.example.lib
+package com.example.lib.leetcode.hashmap
 
-import com.example.lib.leetcode.binaryTrees.TreeNode
-import java.util.LinkedList
-
-class Solution {
-
+class `01twoSum` {
 
     fun twoSum(nums: IntArray, target: Int) : IntArray{
 
@@ -26,15 +22,4 @@ class Solution {
         return result
 
     }
-
 }
-
-
-fun main() {
-    val instance = Solution()
-    val grid = arrayOf(
-        intArrayOf(0, 1),
-        intArrayOf(1, 0)
-    )
-}
-

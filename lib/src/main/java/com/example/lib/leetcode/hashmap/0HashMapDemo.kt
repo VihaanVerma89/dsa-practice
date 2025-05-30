@@ -32,10 +32,18 @@ fun main() {
         o.printKeys(hashMap)
     }
 
+    // getOrPut
     val getOrPut = hashMap.getOrPut("11") { "elevent"}
     println("getOrPut $getOrPut")
 
 
+    // getOrDefault
     val getOrDefault = hashMap.getOrDefault("12", "twelve")
     println("getOrDefault $getOrDefault")
+
+
+    // withIndex
+    for(iv in hashMap.withIndex()) {
+        println("withIndex ${iv.index} ${iv.value.key} ${iv.value.value}")
+    }
 }
