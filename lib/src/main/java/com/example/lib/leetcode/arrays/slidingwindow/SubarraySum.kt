@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays.slidingwindow
+package com.example.lib.leetcode.arrays.slidingwindow
 
 
 // https://leetcode.com/problems/subarray-sum-equals-k/

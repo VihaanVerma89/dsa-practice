@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays.slidingwindow
+package com.example.lib.leetcode.arrays.slidingwindow
 
 // https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
 class countGoodSubstrings {

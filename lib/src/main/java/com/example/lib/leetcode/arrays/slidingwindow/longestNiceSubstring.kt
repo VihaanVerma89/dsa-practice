@@ -1,4 +1,6 @@
-package com.example.lib.topics.arrays.slidingwindow
+package com.example.lib.leetcode.arrays.slidingwindow
+
+import kotlin.text.iterator
 
 class longestNiceSubstring {
 
