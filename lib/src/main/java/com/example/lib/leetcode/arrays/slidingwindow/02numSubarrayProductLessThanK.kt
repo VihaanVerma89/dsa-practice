@@ -1,10 +1,38 @@
 package com.example.lib.leetcode.arrays.slidingwindow
 
 // https://leetcode.com/problems/subarray-product-less-than-k/
-class numSubarrayProductLessThanK {
+class `02numSubarrayProductLessThanK` {
 
 
     fun numSubarrayProductLessThanK(nums: IntArray, k: Int): Int {
+
+        // edge case
+        // product can't be less than 1
+        if (k <= 1) return 0
+
+        var l = 0
+        var r = 0
+        var p = 1
+        var ans = 0
+
+        for (r in nums.indices) {
+
+            p *= nums[r]
+
+            while (p >= k) {
+                p /= nums[l]
+                l++
+            }
+
+            // l .. r is valid subarray
+            ans += r - l + 1
+        }
+
+        return ans
+
+    }
+
+    fun numSubarrayProductLessThanK3(nums: IntArray, k: Int): Int {
 
         // strictly less than k
         // if k is zero then ans is 0
