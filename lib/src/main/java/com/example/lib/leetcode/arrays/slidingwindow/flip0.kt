@@ -4,6 +4,37 @@ package com.example.lib.leetcode.arrays.slidingwindow
 class flip0 {
 
 
+    // this function is better than findLength as it uses two pointers well and uses diff between
+    // them to find the length of subarray when there are two zeros.
+    fun longestStringWithFlip(nums: IntArray, k: Int) : Int{
+
+
+        var l = 0
+        var maxLen = Int.MIN_VALUE
+        var zCount = 0
+
+        for(r in nums.indices){
+
+            if(nums[r]==0){
+                zCount++
+            }
+
+            while(zCount > 1){
+
+                if(nums[l]==0){
+                    zCount--
+                }
+
+                l++
+            }
+
+            maxLen = maxOf(maxLen, r-l+1)
+        }
+        return maxLen
+
+    }
+
+    // This functions solves the problem but is not optimal and has the same logic inside multiple ifs.
     fun findLength(nums: IntArray): Int {
 
         var l = 0

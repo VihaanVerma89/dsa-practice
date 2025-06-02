@@ -6,24 +6,31 @@ import java.util.LinkedList
 class Solution {
 
 
-    fun twoSum(nums: IntArray, target: Int) : IntArray{
+    fun longestStringWithFlip(nums: IntArray, k: Int) : Int{
+        
 
-        val map = hashMapOf<Int, Int>()
-        val result = IntArray(2){ -1 }
+        var l = 0 
+        var maxLen = Int.MIN_VALUE
+        var zCount = 0
 
-        for( iv in nums.withIndex() ) {
-            val value = target - iv.value
-            if( map.contains(value)){
-                result[0] = map.getOrDefault(value, -1)
-                result[1] = iv.index
+        for(r in nums.indices){
+
+            if(nums[r]==0){
+                zCount++
             }
-            else{
-                map[ iv.value ] = iv.index
+            
+            while(zCount > 1){
+
+                if(nums[l]==0){
+                    zCount--
+                }
+
+                l++
             }
 
+            maxLen = maxOf(maxLen, r-l+1)
         }
-
-        return result
+        return maxLen
 
     }
 
@@ -31,10 +38,5 @@ class Solution {
 
 
 fun main() {
-    val instance = Solution()
-    val grid = arrayOf(
-        intArrayOf(0, 1),
-        intArrayOf(1, 0)
-    )
 }
 
