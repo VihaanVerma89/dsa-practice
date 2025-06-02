@@ -43,7 +43,7 @@ fun main() {
 
 
     // withIndex
-    for(iv in hashMap.withIndex()) {
+    for(iv in hashMap.entries.withIndex()){
         println("withIndex ${iv.index} ${iv.value.key} ${iv.value.value}")
     }
 }

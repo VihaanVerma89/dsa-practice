@@ -4,6 +4,42 @@ package com.example.lib.leetcode.arrays.slidingwindow
 class flip0 {
 
 
+    fun findLength(nums: IntArray): Int {
+
+        var l = 0
+        var r = 0
+
+        var onZero = false
+        var maxLen = Int.MIN_VALUE
+        var len = 0
+
+        while (r < nums.size) {
+
+            if (nums[r] == 0) {
+                if (onZero) {
+                    // second zero found
+                    len = r - l
+                    maxLen = maxOf(maxLen, len)
+                    l++
+                    onZero = false
+                } else {
+                    // zero found first time
+                    onZero = true
+                    maxLen = maxOf(maxLen, r - l + 1)
+                    r++
+                }
+            } else {
+                // found 1
+                maxLen = maxOf(maxLen, r - l + 1)
+                r++
+            }
+        }
+
+        return maxLen
+
+
+    }
+
     fun findLen(s: String) {
 
         var l = 0
@@ -58,5 +94,14 @@ class flip0 {
 
     }
 
+
+}
+
+fun main() {
+    val instance = flip0()
+
+    val failingInput = intArrayOf(0, 1, 1, 0, 1, 1, 1)
+    val result = instance.findLength(failingInput)
+    println("result : $result")
 
 }
