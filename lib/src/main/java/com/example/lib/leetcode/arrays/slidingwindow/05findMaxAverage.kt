@@ -1,6 +1,6 @@
-package com.example.lib.leetcode.arrays
+package com.example.lib.leetcode.arrays.slidingwindow
 
-class findMaxAverage {
+class `05findMaxAverage` {
 
     fun findMaxAverage(nums: IntArray, k: Int): Double {
 
