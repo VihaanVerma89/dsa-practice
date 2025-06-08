@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.hashmap
+package com.example.lib.leetcode.`02hashmap`
 
 class findWinners {
     fun findWinners(matches: Array<IntArray>): List<List<Int>> {

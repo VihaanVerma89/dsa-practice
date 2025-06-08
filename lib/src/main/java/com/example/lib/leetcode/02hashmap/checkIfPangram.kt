@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.hashmap
+package com.example.lib.leetcode.`02hashmap`
 
 class checkIfPangram {
     fun checkIfPangram(sentence: String): Boolean {
