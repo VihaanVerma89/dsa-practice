@@ -33,7 +33,7 @@ fun main() {
     }
 
     // getOrPut
-    val getOrPut = hashMap.getOrPut("11") { "elevent"}
+    val getOrPut = hashMap.getOrPut("11") { "elevent" }
     println("getOrPut $getOrPut")
 
 
@@ -42,8 +42,13 @@ fun main() {
     println("getOrDefault $getOrDefault")
 
 
+    // k,v iterations
+    for ((k, v) in hashMap) {
+       println("key: $k, value: $v")
+    }
+
     // withIndex
-    for(iv in hashMap.entries.withIndex()){
+    for (iv in hashMap.entries.withIndex()) {
         println("withIndex ${iv.index} ${iv.value.key} ${iv.value.value}")
     }
 }

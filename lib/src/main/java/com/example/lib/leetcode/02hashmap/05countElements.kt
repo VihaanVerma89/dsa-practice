@@ -2,7 +2,27 @@ package com.example.lib.leetcode.`02hashmap`
 
 class countElements {
 
+
     fun countElements(arr: IntArray): Int {
+
+        val hs = HashSet<Int>()
+
+        for (num in arr) {
+            hs.add(num)
+        }
+
+        var c = 0
+        for (num in arr) {
+
+            if (hs.contains(num + 1)) {
+                c++
+            }
+        }
+
+        return c
+    }
+
+    fun countElements1(arr: IntArray): Int {
 
         val hmap = hashMapOf<Int, Int>()
 
