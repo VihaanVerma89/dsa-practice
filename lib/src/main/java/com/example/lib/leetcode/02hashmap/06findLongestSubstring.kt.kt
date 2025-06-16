@@ -1,8 +1,7 @@
 package com.example.lib.leetcode
 
-.02hashmap
 
-class `06findLongestSubstring` {
+class `06findLongestSubstring.kt` {
 
     /*
     https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/705/hashing/4512/
