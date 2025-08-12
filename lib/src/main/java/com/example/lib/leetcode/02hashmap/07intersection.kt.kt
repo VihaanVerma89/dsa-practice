@@ -1,7 +1,7 @@
 package com.example.lib.leetcode
 
 
-class `07intersection.kt` {
+class `07intersectionkt` {
 
     fun intersection(nums: Array<IntArray>): List<Int> {
 
