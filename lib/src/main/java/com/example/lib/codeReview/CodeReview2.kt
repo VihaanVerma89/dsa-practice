@@ -8,7 +8,7 @@ class CodeReview2{
 
 
     data class User(val firstName:String, val lastName:String)
-    val user = User("Vihaan", "Verma")
+//    val user = User("Vihaan", "Verma")
     val user = User("Vihaan", "Verma")
 
     fun getUserName(user: User): String {

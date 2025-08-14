@@ -1,6 +1,6 @@
 package com.example.lib.leetcode.`01arrays`.twopointers
 
-class isSubsequence {
+class `05isSubsequence` {
 
     fun isSubsequence(s: String?, t: String?): Boolean {
 
