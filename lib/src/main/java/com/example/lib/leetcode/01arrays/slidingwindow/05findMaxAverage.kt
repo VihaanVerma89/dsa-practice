@@ -1,5 +1,7 @@
 package com.example.lib.leetcode.`01arrays`.slidingwindow
 
+
+// https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/703/arraystrings/4594/
 class `05findMaxAverage` {
 
     fun findMaxAverage(nums: IntArray, k: Int): Double {

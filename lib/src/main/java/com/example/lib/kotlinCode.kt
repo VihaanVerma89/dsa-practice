@@ -6,38 +6,39 @@ import java.util.LinkedList
 class Solution {
 
 
-    fun intersection(nums: Array<IntArray>): List<Int>{
-
-        val hm = hashMapOf<Int,Int>( )
+    fun longestOnes(nums: IntArray, k: Int): Int {
 
 
-        for( array in nums){
+        var l = 0
 
-            for(num in array){
+        var z = 0
+        var maxLen = Int.MIN_VALUE
 
-                hm[num] = hm.getOrDefault(num, 0)+1
+        for (r in nums.indices) {
 
-            }
-        }
+            if (nums[r] == 0) {
 
-        val result = mutableListOf<Int>( )
-
-        for( (k,v) in hm ){
-
-            if( v == nums.size ){
-                result.add(k)
+                z++
             }
 
+            while (z > k) {
+
+                if (nums[l] == 0) {
+                    z--
+                }
+
+                l++
+            }
+
+            val len = r - l + 1
+            maxLen = maxOf(maxLen, len)
         }
 
-
-        return result.sorted()
+        return maxLen
 
     }
 
-
 }
-
 
 
 fun main() {
