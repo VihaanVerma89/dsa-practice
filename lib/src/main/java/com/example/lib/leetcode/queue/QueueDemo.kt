@@ -10,6 +10,7 @@ class QueueDemo {
         q.addLast(10)
         q.addLast(20)
         q.addLast(30)
+        q.
 
         println(q.toString())
 
