@@ -1,48 +1,26 @@
-package com.example.lib
-
-import com.example.lib.leetcode.binaryTrees.TreeNode
-import java.util.LinkedList
+import java.util.Stack
 
 class Solution {
 
 
-    fun longestOnes(nums: IntArray, k: Int): Int {
+    fun makeGood(s: String): String {
+
+        val dq = ArrayDeque<Char>()
 
 
-        var l = 0
+        for (c in s) {
 
-        var z = 0
-        var maxLen = Int.MIN_VALUE
+            val peek = dq.lastOrNull()
 
-        for (r in nums.indices) {
-
-            if (nums[r] == 0) {
-
-                z++
+            if (peek != c && (peek?.uppercaseChar() == c || peek?.lowercaseChar() == c)) {
+                dq.removeLast()
+            } else {
+                dq.addLast(c)
             }
 
-            while (z > k) {
-
-                if (nums[l] == 0) {
-                    z--
-                }
-
-                l++
-            }
-
-            val len = r - l + 1
-            maxLen = maxOf(maxLen, len)
         }
 
-        return maxLen
-
+        return dq.joinToString("")
     }
 
 }
-
-
-fun main() {
-
-
-}
-

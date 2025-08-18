@@ -8,6 +8,8 @@ class StackDemo {
 
     /*
     https://stackoverflow.com/questions/46900048/how-can-i-use-stack-in-kotlin
+
+    Check ArrayDequeDemo.kt for ArrayDeque implementation
     */
     fun stackDemo() {
 
