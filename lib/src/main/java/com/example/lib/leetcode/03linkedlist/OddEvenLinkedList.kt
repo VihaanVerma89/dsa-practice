@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.linkedlist
+package com.example.lib.leetcode.`03linkedlist`
 
 //https://leetcode.com/explore/learn/card/linked-list/219/classic-problems/1208/
 class OddEvenLinkedList {

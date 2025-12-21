@@ -1,6 +1,6 @@
-package com.example.lib.leetcode.linkedlist.cycle
+package com.example.lib.leetcode.`03linkedlist`.cycle
 
-import com.example.lib.leetcode.linkedlist.ListNode
+import com.example.lib.leetcode.`03linkedlist`.ListNode
 
 class LinkedListCycleII {
 

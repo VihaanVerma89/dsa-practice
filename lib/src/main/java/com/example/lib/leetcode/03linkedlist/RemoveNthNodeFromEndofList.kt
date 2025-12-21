@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.linkedlist
+package com.example.lib.leetcode.`03linkedlist`
 
 //https://leetcode.com/explore/learn/card/linked-list/214/two-pointer-technique/1296/
 class RemoveNthNodeFromEndofList {

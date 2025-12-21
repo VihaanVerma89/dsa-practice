@@ -1,6 +1,6 @@
 package com.example.lib.topics.linkedList.palindromeLinkedList
 
-import com.example.lib.leetcode.linkedlist.ListNode
+import com.example.lib.leetcode.`03linkedlist`.ListNode
 import java.util.*
 
 class PalindromeLinkedList {

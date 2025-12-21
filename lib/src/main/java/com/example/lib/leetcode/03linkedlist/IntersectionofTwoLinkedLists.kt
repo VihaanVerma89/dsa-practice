@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.linkedlist
+package com.example.lib.leetcode.`03linkedlist`
 
 class IntersectionofTwoLinkedLists {
     fun getIntersectionNode(headA: ListNode?, headB: ListNode?): ListNode? {

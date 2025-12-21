@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.linkedlist
+package com.example.lib.leetcode.`03linkedlist`
 
 //https://leetcode.com/explore/learn/card/linked-list/213/conclusion/1227/
 class MergeTwoSorted {

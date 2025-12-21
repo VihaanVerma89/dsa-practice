@@ -2,7 +2,7 @@ package com.example.lib.leetcode.stack
 
 import java.util.*
 
-class backspaceCompare {
+class `1backspaceCompare` {
 
     fun backspaceCompare(s: String, t: String): Boolean {
         val stack1 = ArrayDeque<Char>()
