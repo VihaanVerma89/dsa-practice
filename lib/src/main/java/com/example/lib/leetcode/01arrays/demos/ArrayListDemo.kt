@@ -1,4 +1,4 @@
-package com.example.lib.leetcode.`01arrays`
+package com.example.lib.leetcode.`01arrays`.demos
 
 class ArrayListDemo {
 

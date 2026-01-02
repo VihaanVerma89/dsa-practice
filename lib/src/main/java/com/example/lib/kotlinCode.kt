@@ -3,24 +3,45 @@ import java.util.Stack
 class Solution {
 
 
-    fun makeGood(s: String): String {
+    /*
+     *
+     * k = 8 
+     *
+     * 3,1,2,7,4,2,1,1,5
+     * 
+     *
+     */
 
-        val dq = ArrayDeque<Char>()
+    fun findLength( nums: IntArray, k: Int ) : Int {
 
 
-        for (c in s) {
+        var r = 0 
+        var l = 0 
+        var curSum = 0 
+        var maxLen = Int.MIN_VALUE
 
-            val peek = dq.lastOrNull()
+        while( r < nums.size ) {
 
-            if (peek != c && (peek?.uppercaseChar() == c || peek?.lowercaseChar() == c)) {
-                dq.removeLast()
-            } else {
-                dq.addLast(c)
+
+            curSum += nums[ r ] 
+
+            while( curSum > k ) {
+
+                curSum -= nums[ l ]
+                l++
+
             }
 
+            // sum < k
+
+            maxLen = maxOf( maxLen, r - l + 1 )
+
+            r++
         }
 
-        return dq.joinToString("")
+        return maxLen
+
     }
+
 
 }
