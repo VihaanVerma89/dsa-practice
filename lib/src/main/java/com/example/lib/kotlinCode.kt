@@ -2,46 +2,37 @@ import java.util.Stack
 
 class Solution {
 
+    fun subarraySum( nums: IntArray, k: Int): Int{
 
-    /*
-     *
-     * k = 8 
-     *
-     * 3,1,2,7,4,2,1,1,5
-     * 
-     *
-     */
-
-    fun findLength( nums: IntArray, k: Int ) : Int {
-
-
+        var l = 0
         var r = 0 
-        var l = 0 
-        var curSum = 0 
-        var maxLen = Int.MIN_VALUE
+        var count = 0 
 
-        while( r < nums.size ) {
+        val sum = IntArray(nums.size)
 
+        sum[0] = nums[0]
 
-            curSum += nums[ r ] 
-
-            while( curSum > k ) {
-
-                curSum -= nums[ l ]
-                l++
-
-            }
-
-            // sum < k
-
-            maxLen = maxOf( maxLen, r - l + 1 )
-
-            r++
+        // create sum array
+        for( r in 1 until nums.size){
+            sum[r] = sum[r-1] + nums[r]
         }
 
-        return maxLen
+        for( r in 0 until nums.size){
+
+
+            while( sum[r] - sum[l] > k ) {
+                l++
+            }
+
+            if ( sum[r] - sum[l] ==k ) {
+                count += r - l + 1
+            }
+
+        }
+
+        return count
+
 
     }
-
-
 }
+

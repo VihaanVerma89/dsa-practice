@@ -5,6 +5,7 @@ class `01findLength` {
     //Example 1: Given an array of positive integers nums and an integer k, find the length of the
     //longest subarray whose sum is less than or equal to k. This is the problem we have been talking about above.
 
+    // When we have negative values in the array the solution becomes more complicated
 
     fun findLength3(nums: IntArray, k: Int): Int {
 
