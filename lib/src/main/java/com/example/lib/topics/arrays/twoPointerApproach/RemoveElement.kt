@@ -2,7 +2,13 @@ package com.example.lib.topics.arrays.twoPointerApproach
 
 class RemoveElement {
 //    https://leetcode.com/problems/remove-element/
-    fun removeElement(nums: IntArray, value: Int): Int {
+
+    fun removeElement(nums: IntArray, value: Int){
+
+    }
+
+
+    fun removeElement1(nums: IntArray, value: Int): Int {
         var i = 0
         var j = nums.lastIndex
         var swap = 0

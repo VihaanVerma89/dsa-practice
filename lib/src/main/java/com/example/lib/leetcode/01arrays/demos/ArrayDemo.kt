@@ -46,8 +46,12 @@ class ArrayDemo {
 
             val matrix = Array(3) { IntArray(3) } // 3x3 Matrix initialized with zeros
 
-            for (row in matrix) {
-                println(row.contentToString())
+            for( row in matrix.indices)
+            {
+                for(col in matrix[row].indices )
+                {
+                    println("$matrix[row][col]")
+                }
             }
         }
 

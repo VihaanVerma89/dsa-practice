@@ -1,8 +1,45 @@
-package com.example.lib.topics.strings
+package com.example.lib.leetcode.`01arrays`.twopointers
 
 class LongestPalindromicSubstring {
 
-    fun longestPalindrome(s: String): String {
+
+    fun longestPalindrome(s: String): String{
+
+        var maxLen = Int.MIN_VALUE
+        var start = Int.MIN_VALUE
+
+        fun expand(left: Int, right: Int){
+
+            var l = left ; var r = right
+
+            while( l > 0 && r < s.length && s[l]==s[r] ){
+
+                val len = right - left + 1
+                if( len > maxLen ) {
+                    maxLen = len
+                    start = l
+                }
+
+                l--
+                r++
+
+            }
+
+        }
+
+
+
+        for (i in s.indices){
+            expand(i,i)
+            expand(i, i+1)
+        }
+
+        val result = s.substring(start, start + maxLen)
+        return result
+
+    }
+
+    fun longestPalindrome2020(s: String): String {
         var r = ""
         if (!s.isNullOrEmpty()) {
 

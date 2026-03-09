@@ -1,6 +1,11 @@
 package com.example.lib.topics.arrays
 
 
+/*
+
+who doesn't want 3sum :p
+
+ */
 fun threeSum(nums: IntArray): List<List<Int>> {
     nums.sort()
 
