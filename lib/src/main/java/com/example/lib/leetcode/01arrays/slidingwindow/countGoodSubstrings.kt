@@ -3,8 +3,46 @@ package com.example.lib.leetcode.`01arrays`.slidingwindow
 // https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
 class countGoodSubstrings {
 
-    // input "aababcabc"
+
     fun countGoodSubstrings(s: String): Int {
+
+        if(s.length < 3) return 0
+
+        val k = 3
+
+        val hmap = hashMapOf< Char, Int> ()
+        var count = 0
+        // build the windows
+        for( i in 0 until k ){
+            val c = s[i]
+            hmap[c] = hmap.getOrDefault(c,0) + 1
+        }
+
+        if(hmap.size == k ) count++
+
+        for( i in k until s.length){
+            val c = s[i]
+            val rc = s[i-k]
+            hmap[c] = hmap.getOrDefault(c,0) + 1
+
+            val freq = hmap.getOrDefault(rc,1) - 1
+            if(freq == 0){
+                // we can remove left element
+                hmap.remove(rc)
+            }
+            else {
+                hmap[rc] = freq
+            }
+
+            if(hmap.size ==k ) count++
+        }
+
+        return count
+
+    }
+
+    // input "aababcabc"
+    fun countGoodSubstrings2(s: String): Int {
         var count = 0
 
         var i = 0
