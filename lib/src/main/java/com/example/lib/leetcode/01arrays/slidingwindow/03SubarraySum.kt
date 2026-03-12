@@ -4,6 +4,16 @@ package com.example.lib.leetcode.`01arrays`.slidingwindow
 // https://leetcode.com/problems/subarray-sum-equals-k/
 class subarraySum {
 
+    /*
+    I usually don't get this right on the first try.
+
+    Here is what i understood
+    - - - - - - - - - - 10 sum
+    - - - - - - 5 sum
+            10 sum  - 5 sum = 5
+               < - - - - > sum is 5
+               multiple such start points can exist and hence we need to keep count in hmap
+     */
     fun subarraySum(nums: IntArray, k: Int): Int {
         val prefixSumCount = mutableMapOf<Int, Int>()
         var count = 0
@@ -26,6 +36,9 @@ class subarraySum {
         return count
     }
 
+    /*
+    This problem can't be solved with sliding window
+     */
     fun subarraySum1(nums: IntArray, k: Int): Int {
         var i = 0
         var j = 0
