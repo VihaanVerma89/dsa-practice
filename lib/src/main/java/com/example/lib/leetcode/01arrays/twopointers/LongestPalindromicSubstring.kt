@@ -3,7 +3,44 @@ package com.example.lib.leetcode.`01arrays`.twopointers
 class LongestPalindromicSubstring {
 
 
-    fun longestPalindrome(s: String): String{
+    fun longestPalindrome12thMarch(s: String): String {
+
+        if( s.length < 2) return s
+
+        var start = Int.MIN_VALUE
+        var maxLen = Int.MIN_VALUE
+
+        fun expand(left: Int, right: Int){
+
+            var l = left
+            var r = right
+
+            while(l > -1 && r < s.length && s[l] == s[r]){
+
+                val len = r - l + 1
+                if(len > maxLen){
+                    // bigger palindrome found
+                    maxLen = len
+                    start = l
+                }
+
+                l--
+                r++
+            }
+
+        }
+
+
+        for( i in s.indices){
+            expand(i,i)
+            expand(i,i+1)
+        }
+
+        return s.substring(start, start + maxLen)
+
+    }
+
+    fun longestPalindrome9thMarch(s: String): String{
 
         var maxLen = Int.MIN_VALUE
         var start = Int.MIN_VALUE
