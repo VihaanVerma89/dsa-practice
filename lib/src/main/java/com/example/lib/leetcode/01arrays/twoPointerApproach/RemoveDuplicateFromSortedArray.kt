@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays.twoPointerApproach
+package com.example.lib.leetcode.`01arrays`.twoPointerApproach
 
 
 fun removeDuplicatesSol(nums: IntArray): Int {

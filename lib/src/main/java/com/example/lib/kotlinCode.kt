@@ -3,24 +3,18 @@ import java.util.Stack
 class Solution {
 
 
-    for( r in nums.indices ) {
-
-        if( nums[r] == 0 ){
-
-            // no swap
+    for loop ranges
 
 
-        }
-        else if( nums[r] != 0 ){
+    for ( i in 0 .. 10 ) 
 
-            // swap
-            nums[l] = nums[r].also{ nums[r] = nums[l] }
-            l++
+    for( i in 0 .. 10 step 2 ) 
 
-        }
+    for ( i in 0 until 10 )
 
+    for ( i in 10 downTo 1 )
 
-    }
+    for ( i in 10 downTo 1 step 3 ) 
 
 
 }

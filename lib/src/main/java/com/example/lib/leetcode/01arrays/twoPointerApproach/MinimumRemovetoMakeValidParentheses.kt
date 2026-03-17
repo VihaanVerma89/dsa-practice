@@ -1,6 +1,5 @@
-package com.example.lib.topics.arrays.twoPointerApproach
+package com.example.lib.leetcode.`01arrays`.twoPointerApproach
 
-import java.io.StringBufferInputStream
 import java.lang.StringBuilder
 import java.util.*
 

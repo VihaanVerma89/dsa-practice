@@ -1,4 +1,9 @@
-package com.example.lib.topics.arrays
+package com.example.lib.leetcode.`01arrays`
+
+/*  https://leetcode.com/explore/interview/card/google/59/array-and-strings/3050/
+Note:
+- this problem is difficult
+ */
 
 fun nextPermutation(nums: IntArray): Unit {
 

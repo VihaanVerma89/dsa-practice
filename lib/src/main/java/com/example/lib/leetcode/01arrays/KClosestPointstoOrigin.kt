@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays
+package com.example.lib.leetcode.`01arrays`
 
 import java.util.*
 import kotlin.math.pow

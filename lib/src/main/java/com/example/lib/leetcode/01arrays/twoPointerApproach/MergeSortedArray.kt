@@ -1,6 +1,4 @@
-package com.example.lib.topics.arrays.twoPointerApproach
-
-import java.util.concurrent.CopyOnWriteArrayList
+package com.example.lib.leetcode.`01arrays`.twoPointerApproach
 
 
 // https://leetcode.com/problems/merge-sorted-array/editorial/

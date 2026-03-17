@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays.twoPointerApproach
+package com.example.lib.leetcode.`01arrays`.twoPointerApproach
 
 class RemoveElement {
 //    https://leetcode.com/problems/remove-element/

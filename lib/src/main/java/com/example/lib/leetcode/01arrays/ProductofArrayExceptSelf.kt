@@ -1,4 +1,4 @@
-package com.example.lib.topics.arrays
+package com.example.lib.leetcode.`01arrays`
 
 class ProductofArrayExceptSelf {
     fun productExceptSelf0n2(nums: IntArray): IntArray {
