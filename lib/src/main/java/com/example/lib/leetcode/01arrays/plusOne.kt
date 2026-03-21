@@ -2,6 +2,38 @@ package com.example.lib.leetcode.`01arrays`
 
 class plusOne {
 
+    fun plusOne21March26(digits: IntArray): IntArray {
+
+        var r = digits.lastIndex
+        var cf = 0
+        while( r > -1)
+        {
+            var d = digits[r]
+            var sum = d + cf
+            if( r == digits.lastIndex){
+                sum += 1
+            }
+
+            cf = sum / 10
+            d = sum % 10
+
+            digits[r] = d
+
+            r--
+        }
+
+        var result = digits
+        if( cf != 0 ){
+            result = IntArray(digits.size + 1)
+            result[0] = 1
+            for ( i in 0 until digits.size){
+                result[i+1] = digits[i]
+            }
+        }
+
+        return result
+    }
+
     fun plusOne(digits: IntArray): IntArray {
 
         var i = digits.lastIndex
