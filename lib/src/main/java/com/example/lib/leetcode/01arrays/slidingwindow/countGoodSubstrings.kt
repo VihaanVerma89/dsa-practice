@@ -4,7 +4,9 @@ package com.example.lib.leetcode.`01arrays`.slidingwindow
 class countGoodSubstrings {
 
 
-    fun countGoodSubstrings(s: String): Int {
+
+
+    fun countGoodSubstrings10Mar26(s: String): Int {
 
         if(s.length < 3) return 0
 
