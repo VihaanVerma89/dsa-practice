@@ -1,9 +1,9 @@
 package com.example.lib.leetcode
 
 
+//    https://leetcode.com/problems/two-sum/
 class TwoSum {
 
-    //    https://leetcode.com/problems/two-sum/
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val hMap = hashMapOf<Int, Int>()
         val ans = IntArray(2) { -1 }

@@ -1,8 +1,10 @@
-package com.example.lib.leetcode.`01arrays`.twoPointerApproach
+package com.example.lib.leetcode.`01arrays`.twopointers
 
 
 // https://leetcode.com/problems/merge-sorted-array/editorial/
 class MergeSortedArray {
+
+
 
     fun mergeBySort(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
         for (i in 0 until n) {

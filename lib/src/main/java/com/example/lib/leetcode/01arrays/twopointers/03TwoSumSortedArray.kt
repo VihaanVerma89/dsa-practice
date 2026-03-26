@@ -2,7 +2,39 @@ package com.example.lib.leetcode
 
 .01arrays.twopointers
 
+// https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 class `03TwoSumSortedArray` {
+
+    fun twoSum25Mar26(numbers: IntArray, target: Int): IntArray {
+
+        var l = 0
+        var r = numbers.lastIndex
+        val ans = intArrayOf(0,0)
+        var sum = 0
+        while( l < r )
+        {
+            sum = numbers[l]+ numbers[r]
+
+            when{
+                sum == target -> {
+                    ans[0] = l + 1
+                    ans[1] = r + 1
+                    break
+                }
+                sum < target -> {
+                    l++
+                }
+                sum > target -> {
+                    r--
+                }
+            }
+
+        }
+
+        return ans
+
+    }
+
     fun twoSum( numbers: IntArray, target: Int) : IntArray {
 
 

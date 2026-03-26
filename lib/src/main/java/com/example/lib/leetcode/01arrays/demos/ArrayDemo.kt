@@ -59,6 +59,14 @@ class ArrayDemo {
         println("toSet: ${arr.toSet()}")
     }
 
+    fun printValue(array: IntArray): Unit {
+        val toString = array.toString()
+        println("toString: $toString ")
+
+        val contentToString = array.contentToString()
+        println("contentToString : $contentToString ")
+    }
+
     // --- Filling & Initializing ---
     fun fillingArrays() {
         val zeros = IntArray(10)

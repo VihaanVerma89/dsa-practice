@@ -1,5 +1,36 @@
-package com.example.lib.leetcode.`01arrays`.twoPointerApproach
+package com.example.lib.leetcode.`01arrays`.twopointers
 
+
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+
+/*
+0,0,1,1,1,2,2,3,3,4
+l
+    r
+0,1,0,1,1,2
+  l
+          r
+0,1,2,1,1,0,2,3
+      l
+              r
+ */
+fun removeDuplicates25Mar26(nums: IntArray): Int {
+
+    var l = 0
+    var r = 0
+
+    for(r in nums.indices){
+
+        if(nums[l]!=nums[r])
+        {
+            l++
+            nums[l] = nums[r].also{ nums[r] = nums[l]}
+        }
+
+    }
+    return l+1
+}
 
 fun removeDuplicatesSol(nums: IntArray): Int {
 

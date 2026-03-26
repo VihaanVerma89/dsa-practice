@@ -1,12 +1,37 @@
-package com.example.lib.leetcode.`01arrays`.twoPointerApproach
-
-import kotlin.math.max
+package com.example.lib.leetcode.`01arrays`.twopointers
 
 
 class ContainerWithMostWater {
 
+
+    fun  maxArea25Mar26(height: IntArray): Int {
+
+        var l = 0
+        var r = height.lastIndex
+
+        var maxArea = Int.MIN_VALUE
+        var area = 0
+
+        while ( l < r ){
+            val w = r - l
+            area =  w * minOf(height[l] , height[r])
+
+            if(height[l]< height[r])
+            {
+                l++
+            }
+            else if(height[l] >= height[r]){
+                r--
+            }
+            maxArea = maxOf(maxArea,area)
+        }
+
+        return maxArea
+
+    }
+
     // 5th oct , 2020
-    fun maxArea(a: IntArray): Int {
+    fun maxArea5Oct20(a: IntArray): Int {
         var l = 0
         var r = a.size - 1
         var maxA = 0
@@ -24,7 +49,7 @@ class ContainerWithMostWater {
         return maxA
     }
 
-    fun maxArea1(height: IntArray): Int {
+    fun maxArea24May20(height: IntArray): Int {
 
         var maxArea = 0
         var l = 0
